@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cab Service Routes</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+
+    <!-- Google Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts for better typography -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome for additional icons (optional) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* CSS Variables for Theme */
+      :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #42a5f5;
+        --accent-color: #f57c00;
+        --background-color: #fdfbfb;
+        --card-background: rgba(255, 255, 255, 0.8);
+        --text-color: #333;
+        --heading-color: #2c3e50;
+        --shadow-color: rgba(0, 0, 0, 0.1);
+        --transition-speed: 0.3s;
+        --font-family: "Roboto", sans-serif;
+      }
+
+      /* BASIC RESET */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* BODY */
+      body {
+        font-family: var(--font-family);
+        background: var(--background-color);
+        color: var(--text-color);
+        transition: background-color var(--transition-speed),
+          color var(--transition-speed);
+        background-color: #ebedf0;
+      }
+
+      /* HERO SECTION */
+      .hero {
+        padding: 6rem 2rem 2rem 2rem;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        color: #fff;
+        border-radius: 0 0 50% 50%;
+        /* margin-top: 60px; Height of the header */
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      /* CONTAINER */
+      .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 2rem 1rem;
+      }
+
+      /* MAIN HEADING */
+      h2.section-heading {
+        text-align: center;
+        margin: 3rem 0 1.5rem;
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--heading-color);
+        position: relative;
+      }
+
+      h2.section-heading::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        margin: 0.5rem auto 0;
+        background: var(--secondary-color);
+        border-radius: 2px;
+      }
+
+      /* ROUTE CARDS LAYOUT */
+      .route-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      /* ROUTE CARD */
+      .route-card {
+        background: var(--card-background);
+        border-radius: 16px;
+        box-shadow: 0 4px 12px var(--shadow-color);
+        transition: transform var(--transition-speed),
+          box-shadow var(--transition-speed);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      .route-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 24px var(--shadow-color);
+      }
+
+      /* ROUTE INFO */
+      .route-info {
+        padding: 1.5rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .route-info h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--heading-color);
+      }
+
+      /* ROUTE DETAILS */
+      .route-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .detail-item {
+        display: flex;
+        align-items: center;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        color: #555;
+        transition: background var(--transition-speed);
+      }
+
+      .detail-item:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+      .detail-item .material-icons {
+        margin-right: 0.75rem;
+        color: var(--secondary-color);
+        font-size: 1.5rem;
+      }
+
+      /* FARE SECTION */
+      .fare {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .fare div {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* MAP CONTAINER */
+      .map-container {
+        position: relative;
+        width: 100%;
+        height: 200px;
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 1rem;
+      }
+
+      .map-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color),
+          var(--accent-color)
+        );
+        /* padding: 2px; */
+        border-radius: 16px;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: destination-out;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      .map-container .map {
+        width: 100%;
+        height: 100%;
+        border-radius: 14px;
+        z-index: 1;
+      }
+
+      /* TOLL MENTION */
+      .toll-mention {
+        text-align: center;
+        margin: 1rem;
+        font-size: 0.95rem;
+        color: #555;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        transition: background var(--transition-speed);
+      }
+
+      .toll-mention:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
+
+
+      /* RESPONSIVE STYLING */
+      @media (max-width: 768px) {
+        .map-container {
+          height: 180px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .route-info h2 {
+          font-size: 1.3rem;
+        }
+
+        .detail-item {
+          font-size: 0.85rem;
+        }
+
+        .detail-item .material-icons {
+          font-size: 1.3rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <h1>VAISHNAVI TOURS</h1>
+      <p>
+        Reliable and comfortable cab services connecting you to your
+        destination.
+      </p>
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+      <!-- Available Cab Routes Section -->
+      <h2 class="section-heading" id="available">Chhattisgarh Routes</h2>
+      <div class="route-cards" id="route-cards-available"></div>
+
+      <!-- Intercity Odisha Rates Section -->
+      <h2 class="section-heading" id="odisha">Intercity Odisha Routes</h2>
+      <div class="route-cards" id="route-cards-odisha"></div>
+    </div>
+
+
+    <!-- Leaflet JS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <script>
+      /*
+      1. Define all routes in two arrays: 
+         - availableRoutes: Existing routes
+         - odishaRoutes: Intercity Odisha Rates
+    */
+      const availableRoutes = [
+        {
+          title: "Raipur ↔ Raigarh",
+          fareSedan: "₹4,500",
+          fareSUV: "₹4,500",
+          distance: "130 km",
+          time: "3 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Raipur", coords: [21.2514, 81.6296] },
+          to: { name: "Raigarh", coords: [21.8982, 83.3966] },
+          color: "#3498db", // blue
+        },
+        {
+          title: "Raipur ↔ Korba",
+          fareSedan: "₹4,500",
+          fareSUV: "₹4,500",
+          distance: "230 km",
+          time: "5 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Raipur", coords: [21.2514, 81.6296] },
+          to: { name: "Korba", coords: [22.4435, 83.1033] },
+          color: "#27ae60", // green
+        },
+        {
+          title: "Bilaspur ↔ Korba",
+          fareSedan: "₹2,200",
+          fareSUV: "₹2,200",
+          distance: "100 km",
+          time: "3 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Bilaspur", coords: [22.0797, 82.1409] },
+          to: { name: "Korba", coords: [22.4435, 83.1033] },
+          color: "#8e44ad", // purple
+        },
+        {
+          title: "Bilaspur Airport ↔ Korba Airport",
+          fareSedan: "₹2,400",
+          fareSUV: "₹2,400",
+          distance: "100 km",
+          time: "3 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Bilaspur Airport", coords: [22.1167, 82.1892] },
+          to: { name: "Korba Airport", coords: [22.4435, 83.1033] },
+          color: "#f39c12", // orange
+        },
+        {
+          title: "Bilaspur ↔ Raipur",
+          fareSedan: "₹2,500",
+          fareSUV: "₹2,500",
+          distance: "130 km",
+          time: "3 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Bilaspur", coords: [22.0797, 82.1409] },
+          to: { name: "Raipur", coords: [21.2514, 81.6296] },
+          color: "#e74c3c", // red
+        },
+        {
+          title: "Bilaspur ↔ Raigarh",
+          fareSedan: "₹3,200",
+          fareSUV: "₹3,200",
+          distance: "160 km",
+          time: "4 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Bilaspur", coords: [22.0797, 82.1409] },
+          to: { name: "Raigarh", coords: [21.8982, 83.3966] },
+          color: "#16a085", // teal
+        },
+        // Add more available routes here if needed
+      ];
+
+      const odishaRoutes = [
+        {
+          title: "Raigarh ↔ Jharsuguda",
+          fareSedan: "₹2,600",
+          fareSUV: "₹2,600",
+          distance: "95 km",
+          time: "3 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Raigarh", coords: [21.8982, 83.3966] },
+          to: { name: "Jharsuguda", coords: [21.4826, 84.9979] },
+          color: "#c0392b", // dark red
+        },
+        {
+          title: "Sambalpur ↔ Raipur",
+          fareSedan: "₹5,500",
+          fareSUV: "₹5,500",
+          distance: "260 km",
+          time: "5 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Sambalpur", coords: [21.4668, 83.9823] },
+          to: { name: "Raipur", coords: [21.2514, 81.6296] },
+          color: "#27ae60", // dark green
+        },
+        {
+          title: "Raipur ↔ Bargarh",
+          fareSedan: "₹5,000",
+          fareSUV: "₹5,000",
+          distance: "230 km",
+          time: "4 hrs",
+          tollIncluded: true,
+          extraCharge: "₹13 per km",
+          from: { name: "Raipur", coords: [21.2514, 81.6296] },
+          to: { name: "Bargarh", coords: [21.2962, 83.6102] },
+          color: "#2980b9", // dark blue
+        },
+        // Add more Odisha routes here if needed
+      ];
+
+      /*
+      2. Function to create a route card (HTML) for each route
+    */
+      function createRouteCard(route, index, containerId) {
+        // Create a card container
+        const card = document.createElement("div");
+        card.className = "route-card";
+
+        // route-info section
+        const info = document.createElement("div");
+        info.className = "route-info";
+
+        const title = document.createElement("h2");
+        title.textContent = route.title;
+
+        const details = document.createElement("div");
+        details.className = "route-details";
+
+        // Fare (Sedan and SUV) in the same div
+        const fareDiv = document.createElement("div");
+        fareDiv.className = "fare";
+
+        // Fare for Sedan
+        const fareSedanP = document.createElement("div");
+        fareSedanP.className = "fare-sedan";
+        fareSedanP.innerHTML = `<span class="material-icons" aria-hidden="true">local_taxi</span> <strong>Fare (Sedan) :   </strong> ${route.fareSedan}`;
+
+        // Fare for SUV
+        const fareSuvP = document.createElement("div");
+        fareSuvP.className = "fare-suv";
+        fareSuvP.innerHTML = `<span class="material-icons" aria-hidden="true">airport_shuttle</span> <strong>Fare (SUV) :  </strong> ${route.fareSUV}`;
+
+        // Append Sedan and SUV fares to fareDiv
+        fareDiv.appendChild(fareSedanP);
+        fareDiv.appendChild(fareSuvP);
+
+        // Distance
+        const distanceP = document.createElement("div");
+        distanceP.className = "detail-item distance";
+        distanceP.innerHTML = `<span class="material-icons" aria-hidden="true">straighten</span> <strong>Distance     : </strong> ${route.distance}`;
+
+        // Time
+        const timeP = document.createElement("div");
+        timeP.className = "detail-item time";
+        timeP.innerHTML = `<span class="material-icons" aria-hidden="true">access_time</span> <strong>Time : </strong> ${route.time}`;
+
+        // Extra Charge
+        const extraP = document.createElement("div");
+        extraP.className = "detail-item extra-charge";
+        extraP.innerHTML = `<span class="material-icons" aria-hidden="true">currency_rupee</span> <strong> <pre>Extra-charge : </pre></strong> ${route.extraCharge}`;
+
+        // Append fare, distance, time, and extra charge to details container
+        details.appendChild(fareDiv);
+        details.appendChild(distanceP);
+        details.appendChild(timeP);
+        details.appendChild(extraP);
+
+        // Put title + details together
+        info.appendChild(title);
+        info.appendChild(details);
+
+        // map-container with unique ID
+        const mapBorder = document.createElement("div");
+        mapBorder.className = "map-container";
+        const mapDiv = document.createElement("div");
+        mapDiv.className = "map";
+        mapDiv.id = `map_${containerId}_${index}`; // unique ID for the map
+
+        mapBorder.appendChild(mapDiv);
+
+        // Put map after route info
+        card.appendChild(info);
+        card.appendChild(mapBorder);
+
+        // Special Mention for Toll Charges (moved below the map)
+        const tollMention = document.createElement("div");
+        tollMention.className = "toll-mention";
+        tollMention.textContent = route.tollIncluded
+          ? "Toll charges are included in the fare."
+          : "Toll charges are not included.";
+
+        card.appendChild(tollMention);
+
+        // Append the card to the specified container
+        document.getElementById(containerId).appendChild(card);
+
+        // Initialize the map
+        initializeMap(
+          `map_${containerId}_${index}`,
+          route.from.coords,
+          route.to.coords,
+          route.title,
+          route.color
+        );
+      }
+
+      /*
+      3. Function to initialize Leaflet Map for a route
+    */
+      function initializeMap(mapId, fromCoords, toCoords, title, color) {
+        // Create the map
+        const map = L.map(mapId, {
+          scrollWheelZoom: true,
+          dragging: true,
+          doubleClickZoom: true,
+          boxZoom: true,
+          keyboard: true,
+          zoomControl: true,
+        }).setView(getCenter(toCoords, fromCoords), 8);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          attribution: "&copy; OpenStreetMap contributors",
+        });
+
+        //google map style layout map
+        L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
+          maxZoom: 20,
+          subdomains: ["mt0", "mt1", "mt2", "mt3"],
+        }).addTo(map);
+        // Add markers for from and to
+        const fromMarker = L.marker(fromCoords)
+          .addTo(map)
+          .bindPopup(`<strong>${routeName(fromCoords)}</strong>`)
+          .openPopup();
+        const toMarker = L.marker(toCoords)
+          .addTo(map)
+          .bindPopup(`<strong>${routeName(toCoords)}</strong>`);
+
+        // Draw polyline between from and to
+        const routeLine = L.polyline([fromCoords, toCoords], {
+          color: color,
+          weight: 4,
+          opacity: 0.7,
+        }).addTo(map);
+
+        // Fit the map to the route
+        map.fitBounds(routeLine.getBounds(), { padding: [20, 20] });
+      }
+
+      /*
+      4. Helper function to calculate center between two coordinates
+    */
+      function getCenter(coords1, coords2) {
+        return [(coords1[0] + coords2[0]) / 2, (coords1[1] + coords2[1]) / 2];
+      }
+
+      /*
+      5. Helper function to get city name based on coordinates
+         (In a real application, you'd use reverse geocoding. Here, we'll map manually.)
+    */
+      function routeName(coords) {
+        const [lat, lng] = coords;
+        if (lat === 22.0797 && lng === 82.1409) return "Bilaspur";
+        if (lat === 21.2514 && lng === 81.6296) return "Raipur";
+        if (lat === 21.8982 && lng === 83.3966) return "Raigarh";
+        if (lat === 22.4435 && lng === 83.1033) return "Korba";
+        if (lat === 22.1167 && lng === 82.1892) return "Bilaspur Airport";
+        if (lat === 21.4826 && lng === 84.9979) return "Jharsuguda";
+        if (lat === 21.4668 && lng === 83.9823) return "Sambalpur";
+        if (lat === 21.2962 && lng === 83.6102) return "Bargarh";
+        return "Unknown Location";
+      }
+
+      /*
+      6. Render all route cards for Available Cab Routes
+    */
+      const availableContainerId = "route-cards-available";
+      availableRoutes.forEach((route, index) => {
+        createRouteCard(route, index, availableContainerId);
+      });
+
+      /*
+      7. Render all route cards for Intercity Odisha Rates
+    */
+      const odishaContainerId = "route-cards-odisha";
+      odishaRoutes.forEach((route, index) => {
+        createRouteCard(route, index, odishaContainerId);
+      });
+    </script>
+  </body>
+</html>
