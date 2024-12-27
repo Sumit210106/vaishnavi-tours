@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media screen and (max-width: 768px) {
+            footer .container {
+                flex-direction: column;
+                align-items: center;
+            }
+            footer .col-md-4 {
+                margin-bottom: 20px;
+            }
+            
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 60px 0;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3), 0px 0px 15px rgba(0, 0, 0, 0.5);
+        }
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            box-shadow: inset;
+        }
+        footer h3 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            padding: 5px 0;
+        }
+        footer ul li a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        footer ul li a:hover {
+            text-decoration: underline;
+            color: #f0a500;
+            transform: translateY(-3px);
+        }
+        footer ul li a img {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+        }
+    </style>
+</head>
+<body>
+    <footer>
+        <div class="container">
+            <div class="col-md-4">
+                <h2 style="font-weight: bold;">THANK YOU FOR VISITING</h2>
+                <h1>VAISHNAVI TOURS 🙏🏻</h1>
+                <ul style="font-size: 20px;">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Services</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Support</h3>
+                <ul style="font-size: 20px;">
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h3>Get in Touch</h3>
+                <ul style="font-size: 20px;">
+                    <li><a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/blog.png" alt="Blog">Blog</a></li>
+                    <li><a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook.png" alt="Facebook">Facebook</a></li>
+                    <li><a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter">Twitter</a></li>
+                    <li><a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram.png" alt="Instagram">Instagram</a></li>
+                </ul>
+                <div>
+                    <button style="background-color: #f0a500; color: #333; padding: 10px 20px; border: none; border-radius: 5px; font-size: 20px; cursor: pointer;transition: all 0.3s ease;
+            box-shadow: 0px 4px 6px rgba(57, 56, 56, 0.3);">Get A Call Back</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
