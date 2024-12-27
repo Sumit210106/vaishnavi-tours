@@ -19,7 +19,7 @@
         .container {
             width: 70%;
             margin: 50px auto;
-            padding: 20px;
+            padding: 50px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             backdrop-filter: blur(12px);
@@ -99,6 +99,9 @@
             justify-content: space-between;
             margin: 20px 0;
         }
+        textarea::placeholder {
+            color: whitesmoke;
+        }
 
         .add-feedback button {
             width: auto;
@@ -125,7 +128,7 @@
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
             
-            <label for="email">Your Email:</label>
+            <label for="email">Your Email *:</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
             
             <label for="contact">Contact Number:</label>
@@ -156,7 +159,7 @@
             </div>
 
             <label for="comments">Your Feedback:</label>
-            <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback here..." required></textarea>
+            <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback here..." required style="color: whitesmoke;"></textarea>
 
             <div class="add-feedback">
                 <span>Want to add feedback for more than one category?</span>
