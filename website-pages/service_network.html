@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taxi Service Network</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
+    />
+    <style>
+      /* Global Styling */
+      body {
+        font-family: "Inter", sans-serif;
+        margin-top: 50px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        background: #50577a;
+        color: #e0e0e0;
+        text-align: center;
+      }
+
+      /* Title Styling */
+      h1 {
+        font-size: 2.5em;
+        margin-top: 30px;
+        color: #00bcd4;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      /* Paragraph Styling */
+      p {
+        font-size: 1.2em;
+        color: #b0bec5;
+        line-height: 1.5;
+        max-width: 700px;
+        margin: 10px auto 20px;
+      }
+
+      /* Map Container Styling */
+      .map-container {
+        width: 90%;
+        height: 72vh;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        margin-bottom: 20px;
+        border: 2px solid #333;
+      }
+
+      /* Button Styling */
+      .cta-button {
+        display: inline-block;
+        padding: 15px 35px;
+        background-color: #f39c12;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
+        margin-bottom: 20px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      .cta-button:hover {
+        background-color: #e67e22;
+        transform: translateY(-5px);
+      }
+
+      /* Suggestion Box Styling */
+      .suggestion-box {
+        background-color: #2e2e2e;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        max-width: 700px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      }
+
+      .suggestion-box p {
+        font-size: 1.1em;
+        color: #b0bec5;
+      }
+
+      .suggestion-button {
+        display: inline-block;
+        padding: 12px 30px;
+        background-color: #00bcd4;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 1em;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: 10px;
+        transition: background-color 0.3s ease;
+      }
+
+      .suggestion-button:hover {
+        background-color: #0097a7;
+      }
+
+      /* Media Queries for Responsiveness */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2em;
+        }
+
+        p {
+          font-size: 1.1em;
+        }
+
+        .map-container {
+          height: 55vh;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.8em;
+        }
+
+        p {
+          font-size: 1em;
+        }
+
+        .map-container {
+          height: 50vh;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Call-to-Action Button -->
+    <a href="#" class="cta-button">Book a Ride Now</a>
+
+    <!-- Title and Description -->
+    <h1>Our Service Network</h1>
+    <p>
+      Discover the cities we serve and their interconnecting routes. Reliable
+      taxi services that ensure your comfort and convenience!
+    </p>
+
+    <!-- Map Container -->
+    <div id="map" class="map-container"></div>
+
+    <!-- Suggestion Section -->
+    <div class="suggestion-box">
+      <p>Is your city not listed? <strong>Suggest it to us!</strong></p>
+      <a href="#" class="suggestion-button">Provide Feedback</a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"></script>
+    <script>
+      // Initialize map
+      var map = L.map("map");
+
+      // Locations of the cities (latitude, longitude)
+      var locations = {
+        Bilaspur: [22.0782, 82.1417],
+        Raipur: [21.2514, 81.6296],
+        Raigarh: [21.9034, 83.4015],
+        Korba: [22.3563, 82.6781],
+        Jharsuguda: [21.8554, 84.0062],
+        Sambalpur: [21.4685, 83.9778],
+        Bargarh: [21.3669, 83.6327],
+      };
+
+      //google style map
+      L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
+        maxZoom: 20,
+        subdomains: ["mt0", "mt1", "mt2", "mt3"],
+      }).addTo(map);
+
+      // Add default markers for each city
+      var cityMarkers = [];
+      Object.keys(locations).forEach(function (city) {
+        var marker = L.marker(locations[city])
+          .addTo(map)
+          .bindPopup("<b>" + city + "</b><br>Taxi service available.");
+        cityMarkers.push(marker);
+      });
+
+      // Fit the map view to include all the markers
+      var group = new L.featureGroup(cityMarkers);
+      map.fitBounds(group.getBounds());
+
+      // Function to create straight routes between cities
+      function addRoutes(city1, city2, color) {
+        L.polyline([locations[city1], locations[city2]], {
+          color: color,
+          weight: 4,
+          opacity: 0.8,
+        }).addTo(map);
+      }
+
+      // Predefined colors for routes
+      var routeColors = ["#FF5733", "#394778", "#3357FF", "#FF33A1", "#F1C40F"];
+
+      // Create routes between cities
+      var cities = Object.keys(locations);
+      var colorIndex = 0;
+      for (var i = 0; i < cities.length; i++) {
+        for (var j = i + 1; j < cities.length; j++) {
+          addRoutes(
+            cities[i],
+            cities[j],
+            routeColors[colorIndex % routeColors.length]
+          );
+          colorIndex++;
+        }
+      }
+    </script>
+  </body>
+</html>
