@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
             padding: 0;
             font-family: 'Roboto', sans-serif;
             background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), 
-                        url('https://promos.makemytrip.com/appfest/xhdpi/ChicletBG_OSCabOffer_28Jan_BG.jpg') no-repeat center center/cover;
+                        url('') no-repeat center center/cover;
             color: white;
             height: 100vh;
             overflow-x: hidden;
@@ -19,12 +20,13 @@
         .container {
             width: 70%;
             margin: 50px auto;
-            padding: 50px;
+            padding: 60px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
             backdrop-filter: blur(12px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
             animation: fadeIn 1.5s ease-in-out;
+            text-align: center;
         }
 
         h1 {
@@ -38,10 +40,12 @@
             font-size: 1.2rem;
             display: block;
             margin-top: 15px;
+            width: 90%;
+            text-align: left;
         }
 
         input, select, textarea, button {
-            width: 100%;
+            width: 90%;
             padding: 12px;
             margin: 10px 0;
             border: none;
@@ -67,11 +71,11 @@
             background: #d35400;
             transform: scale(1.05);
         }
-
         .stars {
             display: flex;
-            justify-content: center;
-            margin: 10px 0;
+            justify-content: space-evenly;text-align: center;
+            margin: 10px ;
+            flex-direction: row-reverse;
         }
 
         .stars input {
@@ -79,11 +83,11 @@
         }
 
         .stars label {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: rgba(255, 255, 255, 0.5);
             cursor: pointer;
-            margin: 0 5px;
-            transition: color 0.3s ease-in-out, transform 0.2s;
+            margin: 5px;
+            transition: color 0.3s ease-out-in, transform 0.2s;
         }
 
         .stars input:checked ~ label,
@@ -93,21 +97,8 @@
             transform: scale(1.2);
         }
 
-        .add-feedback {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 20px 0;
-        }
-        textarea::placeholder {
-            color: whitesmoke;
-        }
 
-        .add-feedback button {
-            width: auto;
-            padding: 10px 20px;
-            font-size: 1rem;
-        }
+
 
         @keyframes fadeIn {
             from {
@@ -119,8 +110,28 @@
                 transform: translateY(0);
             }
         }
+
+        .feedback-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            backdrop-filter: blur(12px);
+        }
+        
+        .remove-section {
+            background: #ff9532;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .remove-section:hover {
+            background: #e74c3c;
+        }
     </style>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -129,7 +140,7 @@
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
             
-            <label for="email">Your Email *:</label>
+            <label for="email">Your Email:</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
             
             <label for="contact">Contact Number:</label>
@@ -149,18 +160,22 @@
             <div class="stars">
                 <input type="radio" id="star5" name="rating" value="5">
                 <label for="star5">&#9733;</label>
+
                 <input type="radio" id="star4" name="rating" value="4">
                 <label for="star4">&#9733;</label>
+
                 <input type="radio" id="star3" name="rating" value="3">
                 <label for="star3">&#9733;</label>
+
                 <input type="radio" id="star2" name="rating" value="2">
                 <label for="star2">&#9733;</label>
+
                 <input type="radio" id="star1" name="rating" value="1">
                 <label for="star1">&#9733;</label>
             </div>
 
             <label for="comments">Your Feedback:</label>
-            <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback here..." required style="color: whitesmoke;"></textarea>
+            <textarea id="comments" name="comments" rows="4" placeholder="Write your feedback here..." required></textarea>
 
             <div class="add-feedback">
                 <span>Want to add feedback for more than one category?</span>
@@ -169,40 +184,69 @@
 
             <button type="submit">Submit Feedback</button>
         </form>
+
+        
     </div>
 
     <script>
-            emailjs.init('-KAL8dhf9nwGDKtZQ'); // Replace with your EmailJS public key
+        document.getElementById('addMore').addEventListener('click', function() {
+            
+            const newSection = document.createElement('div');
+            newSection.classList.add('feedback-section');
+            
+           
+            const feedbackTypeLabel = document.createElement('label');
+            feedbackTypeLabel.innerHTML = 'Feedback Type:';
+            const feedbackTypeSelect = document.createElement('select');
+            feedbackTypeSelect.name = 'feedbackType';
+            feedbackTypeSelect.innerHTML = `
+                <option value="Driver">Driver</option>
+                <option value="Vehicle">Vehicle</option>
+                <option value="Journey">Journey</option>
+            `;
+            newSection.appendChild(feedbackTypeLabel);
+            newSection.appendChild(feedbackTypeSelect);
 
-        document.getElementById('feedbackForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+            // Add Rating stars
+            const ratingLabel = document.createElement('label');
+            ratingLabel.innerHTML = 'Service Rating:';
+            const starsDiv = document.createElement('div');
+            starsDiv.classList.add('stars');
+            for (let i = 5; i >= 1; i--) {
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.id = star${i}_new;
+                input.name = rating_new_${i};
+                input.value = i;
+                const label = document.createElement('label');
+                label.setAttribute('for', star${i}_new);
+                label.innerHTML = '&#9733;';
+                starsDiv.appendChild(input);
+                starsDiv.appendChild(label);
+            }
+            newSection.appendChild(ratingLabel);
+            newSection.appendChild(starsDiv);
 
-            // Initialize EmailJS
+          
+            const commentsLabel = document.createElement('label');
+            commentsLabel.innerHTML = 'Your Feedback:';
+            const commentsTextarea = document.createElement('textarea');
+            commentsTextarea.name = 'comments';
+            commentsTextarea.rows = 4;
+            commentsTextarea.placeholder = 'Write your feedback here...';
+            newSection.appendChild(commentsLabel);
+            newSection.appendChild(commentsTextarea);
 
-            const serviceID = 'service_yqjy5gk'; // Replace with your Service ID
-            const templateID = 'template_5evkann'; // Replace with your Template ID
+            const removeButton = document.createElement('button');
+            removeButton.classList.add('remove-section');
+            removeButton.innerHTML = 'Remove this Feedback';
+            removeButton.addEventListener('click', function() {
+                newSection.remove();
+            });
+            newSection.appendChild(removeButton);
 
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                contact: document.getElementById('contact').value,
-                vehicleNumber: document.getElementById('vehicleNumber').value,
-                feedbackType: document.getElementById('feedbackType').value,
-                rating: document.querySelector('input[name="rating"]:checked')?.value || 'No Rating',
-                comments: document.getElementById('comments').value,
-            };
-
-            console.log('Sending data to EmailJS:', formData);
-
-            emailjs.send(serviceID, templateID, formData)
-                .then(() => {
-                    alert('Feedback sent successfully!');
-                    document.getElementById('feedbackForm').reset();
-                })
-                .catch((error) => {
-                    console.error('Error sending feedback:', error);
-                    alert(`Failed to send feedback. Error: ${error.text || error}`);
-                });
+            
+            document.querySelector('form').appendChild(newSection);
         });
     </script>
 </body>
