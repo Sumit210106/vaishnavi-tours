@@ -190,11 +190,11 @@
 
     <script>
         document.getElementById('addMore').addEventListener('click', function() {
-            
+            // Create new feedback section
             const newSection = document.createElement('div');
             newSection.classList.add('feedback-section');
             
-           
+            // Add Feedback Type dropdown
             const feedbackTypeLabel = document.createElement('label');
             feedbackTypeLabel.innerHTML = 'Feedback Type:';
             const feedbackTypeSelect = document.createElement('select');
@@ -215,11 +215,11 @@
             for (let i = 5; i >= 1; i--) {
                 const input = document.createElement('input');
                 input.type = 'radio';
-                input.id = star${i}_new;
-                input.name = rating_new_${i};
+                input.id = `star${i}_new`;
+                input.name = `rating_new_${i}`;
                 input.value = i;
                 const label = document.createElement('label');
-                label.setAttribute('for', star${i}_new);
+                label.setAttribute('for', `star${i}_new`);
                 label.innerHTML = '&#9733;';
                 starsDiv.appendChild(input);
                 starsDiv.appendChild(label);
@@ -227,7 +227,7 @@
             newSection.appendChild(ratingLabel);
             newSection.appendChild(starsDiv);
 
-          
+            // Add comments field
             const commentsLabel = document.createElement('label');
             commentsLabel.innerHTML = 'Your Feedback:';
             const commentsTextarea = document.createElement('textarea');
@@ -237,6 +237,7 @@
             newSection.appendChild(commentsLabel);
             newSection.appendChild(commentsTextarea);
 
+            // Add remove section button
             const removeButton = document.createElement('button');
             removeButton.classList.add('remove-section');
             removeButton.innerHTML = 'Remove this Feedback';
@@ -245,9 +246,10 @@
             });
             newSection.appendChild(removeButton);
 
-            
+            // Add new section to the form
             document.querySelector('form').appendChild(newSection);
         });
     </script>
+    
 </body>
 </html>
