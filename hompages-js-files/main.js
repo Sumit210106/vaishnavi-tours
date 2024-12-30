@@ -29,18 +29,21 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 
 
 
-const swiperHome = new Swiper('.home__swiper',{
+const swiperHome = new Swiper('.home__swiper', {
     speed: 1200,
     effect: 'fade',
-    
+    loop: true,  // Enables infinite looping
+    autoplay: {
+        delay: 2500,  // Changes slide every 3 seconds
+        disableOnInteraction: false  // Allows autoplay to continue after user interaction
+    },
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
-        renderBullet: (index, className) =>{
-            return '<span class="' + className + '">' +String(index + 1).padStart(2,'0') + "</span>";
-        },
     },
+    navigation: false,  // Removes navigation buttons
 });
+
 
 
 gsap.from('.home__panel-1',{y:-1000,duration:2})
