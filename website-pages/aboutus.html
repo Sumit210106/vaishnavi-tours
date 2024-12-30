@@ -14,25 +14,65 @@
         padding: 0;
         overflow-x: hidden;
       }
-
-      /* Hero Section */
+      /* Hero Section Styling */
       .hero-section {
         position: relative;
-        height: 100vh;
         background-image: url("https://images.clickdealer.co.uk/blog/1061/featured_images/75ca2501382782fd251db4196a6d082c.jpg");
         background-size: cover;
         background-position: center;
-        background-attachment: fixed;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        overflow: hidden;
       }
 
+      /* Content Styling */
       .hero-content {
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        z-index: 1;
-        color: white;
+        opacity: 0;
+        transform: translateX(-50px); /* Start position for slide effect */
+        animation: fadeInSlide 1.5s ease-out forwards; /* Trigger the animation */
+      }
+
+      /* Animation for fade-in and slide-in effect */
+      @keyframes fadeInSlide {
+        0% {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Hero Heading Styling */
+      .hero-content h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 2px;
+        font-weight: bold;
+      }
+
+      /* Hero Paragraph Styling */
+      .hero-content p {
+        font-size: 1.25rem;
+        margin-top: 0;
+        font-family: "Arial", sans-serif;
+      }
+
+      /* Hover Effect on Hero Section (e.g., background change) */
+      .hero-section:hover {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Darken the background on hover */
+        transition: background-color 0.5s ease;
       }
 
       /* Container for Content */
@@ -106,16 +146,45 @@
         border-radius: 1rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(8px);
+        animation: fadeInUp 1.5s ease-out forwards; /* Added fade-in animation */
+        opacity: 0; /* Hidden initially */
+        transform: translateY(50px); /* Positioned below the viewport */
+        transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition */
       }
 
+      .owner-section.show {
+        opacity: 1; /* Fade-in when shown */
+        transform: translateY(0); /* Slide-up to original position */
+      }
+
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Owner Image Styling */
       .owner-img {
         border-radius: 1.25rem;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         max-width: 100%;
         height: 400px;
-        margin-top: 100px;
+        margin-top: 50px;
+        transform: scale(0.9); /* Start small for zoom effect */
+        transition: transform 0.4s ease-out; /* Smooth zoom-in effect */
       }
 
+      /* Hover effect on the image to zoom in */
+      .owner-img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Owner Information Styling */
       .owner-info {
         display: flex;
         flex-direction: column;
@@ -123,6 +192,16 @@
         justify-content: center;
         text-align: center;
         color: #eaeaea;
+        animation: fadeIn 1s ease-out 0.5s forwards; /* Added fade-in animation */
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
 
       .owner-info h2 {
@@ -130,29 +209,75 @@
         font-weight: 600;
         color: #f0a500;
         margin-bottom: 1rem;
+        animation: bounceIn 1s ease-out forwards; /* Bounce-in effect */
       }
 
+      @keyframes bounceIn {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        60% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Info Paragraph Styling */
       .owner-info .info {
         font-size: 1.1rem;
         line-height: 1.6;
         margin-bottom: 2rem;
         max-width: 700px;
+        animation: fadeInUp 1.2s ease-out 1s forwards; /* Added staggered fade-in */
       }
 
+      @keyframes fadeInUp {
+        0% {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Grid Layout for Stats */
       .grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 1.5rem;
+        margin-top: 2rem;
       }
 
+      /* Stat Card Styling */
       .stat {
         text-align: center;
         padding: 1.5rem;
         background-color: rgba(0, 0, 0, 0.5);
         border-radius: 1rem;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transform: translateY(20px);
+        opacity: 0;
+        animation: statReveal 1s ease-out forwards; /* Reveal stats with animation */
       }
 
+      @keyframes statReveal {
+        0% {
+          transform: translateY(20px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      /* Stat Value and Label Styling */
       .stat .stat-value {
         font-size: 2.5rem;
         color: #f0a500;
@@ -194,8 +319,8 @@
 
       .chauffeur-card img {
         width: 100%;
-        height: 15rem;
-        object-fit: cover;
+        height: 20rem;
+        object-fit: inherit;
         border-radius: 1rem;
         margin-bottom: 1rem;
       }
@@ -278,167 +403,170 @@
         font-size: 3.5rem;
       }
 
-/* Overall Contact Section Styling */
-.contact-info {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 3rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem;
-  background: linear-gradient(145deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
-  border-radius: 1.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(12px);
-}
+      /* Overall Contact Section Styling */
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem;
+        background: linear-gradient(
+          145deg,
+          rgba(0, 0, 0, 0.6),
+          rgba(0, 0, 0, 0.8)
+        );
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(12px);
+      }
 
-/* Contact Details Styling */
-.contact-details {
-  flex: 1;
-  padding: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
+      /* Contact Details Styling */
+      .contact-details {
+        flex: 1;
+        padding: 2.5rem;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 1.25rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
 
-/* Heading Style */
-.contact-details h2 {
-  font-size: 2.5rem;
-  color: #f0a500;
-  margin-bottom: 2rem;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+      /* Heading Style */
+      .contact-details h2 {
+        font-size: 2.5rem;
+        color: #f0a500;
+        margin-bottom: 2rem;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
 
-/* Contact Item Styling */
-.contact-item {
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(184, 134, 11, 0.3);
-}
+      /* Contact Item Styling */
+      .contact-item {
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(184, 134, 11, 0.3);
+      }
 
-.contact-item h3 {
-  font-size: 1.3rem;
-  color: #f0a500;
-  font-weight: bold;
-  margin-bottom: 0.8rem;
-  font-family: 'Poppins', sans-serif;
-}
+      .contact-item h3 {
+        font-size: 1.3rem;
+        color: #ffaf03;
+        font-weight: bold;
+        margin-bottom: 0.8rem;
+        font-family: "Poppins", sans-serif;
+      }
 
-.contact-item p {
-  font-size: 1.1rem;
-  color: #eaeaea;
-}
+      .contact-item p {
+        font-size: 1.1rem;
+        color: #eaeaea;
+      }
 
-.contact-item a {
-  color: #f0a500;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1.1rem;
-}
+      .contact-item a {
+        color: #e6dbc4;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
 
-.contact-item a:hover {
-  text-decoration: underline;
-  color: #b8860b;
-}
+      .contact-item a:hover {
+        text-decoration: underline;
+        color: #b8860b;
+      }
 
-/* Contact Form Styling */
-.contact-form {
-  flex: 1.5;
-  padding: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
+      /* Contact Form Styling */
+      .contact-form {
+        flex: 1.5;
+        padding: 2.5rem;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 1.25rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
 
-/* Contact Form Heading */
-.contact-form h2 {
-  font-size: 2.5rem;
-  color: #f0a500;
-  margin-bottom: 2rem;
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+      /* Contact Form Heading */
+      .contact-form h2 {
+        font-size: 2.5rem;
+        color: #f0a500;
+        margin-bottom: 2rem;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
 
-/* Form Group Styling */
-.form-group {
-  margin-bottom: 2rem;
-}
+      /* Form Group Styling */
+      .form-group {
+        margin-bottom: 2rem;
+      }
 
-.form-label {
-  font-size: 1rem;
-  color: #d3d3d3;
-  margin-bottom: 0.75rem;
-}
+      .form-label {
+        font-size: 1rem;
+        color: #d3d3d3;
+        margin-bottom: 0.75rem;
+      }
 
-.form-input {
-  padding: 1rem;
-  border-radius: 1rem;
-  background-color: rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(184, 134, 11, 0.2);
-  color: #ffffff;
-  font-size: 1.1rem;
-  width: 100%;
-  transition: all 0.3s ease;
-}
+      .form-input {
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: rgba(0, 0, 0, 0.4);
+        border: 1px solid rgba(184, 134, 11, 0.2);
+        color: #ffffff;
+        font-size: 1.1rem;
+        width: 100%;
+        transition: all 0.3s ease;
+      }
 
-.form-input:focus {
-  border-color: #b8860b;
-  outline: none;
-  box-shadow: 0 0 8px rgba(184, 134, 11, 0.5);
-}
+      .form-input:focus {
+        border-color: #b8860b;
+        outline: none;
+        box-shadow: 0 0 8px rgba(184, 134, 11, 0.5);
+      }
 
-/* Submit Button Styling */
-.submit-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(to right, #b8860b, #daa520);
-  color: white;
-  padding: 1.25rem 2rem;
-  border-radius: 1rem;
-  font-weight: bold;
-  font-size: 1.2rem;
-  width: 100%;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
+      /* Submit Button Styling */
+      .submit-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(to right, #b8860b, #daa520);
+        color: white;
+        padding: 1.25rem 2rem;
+        border-radius: 1rem;
+        font-weight: bold;
+        font-size: 1.2rem;
+        width: 100%;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
 
-.submit-btn:hover {
-  background: linear-gradient(to right, #8b6508, #b8860b);
-  transform: translateY(-2px);
-}
+      .submit-btn:hover {
+        background: linear-gradient(to right, #8b6508, #b8860b);
+        transform: translateY(-2px);
+      }
 
-.submit-btn:active {
-  transform: translateY(2px);
-}
+      .submit-btn:active {
+        transform: translateY(2px);
+      }
 
-.submit-btn .send-icon {
-  margin-left: 1rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: white;
-}
+      .submit-btn .send-icon {
+        margin-left: 1rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        fill: white;
+      }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .contact-info {
-    flex-direction: column;
-    padding: 2rem;
-  }
+      /* Mobile Responsiveness */
+      @media (max-width: 768px) {
+        .contact-info {
+          flex-direction: column;
+          padding: 2rem;
+        }
 
-  .contact-details,
-  .contact-form {
-    flex: none;
-    width: 100%;
-  }
-}
-
+        .contact-details,
+        .contact-form {
+          flex: none;
+          width: 100%;
+        }
+      }
 
       .form-section {
         display: flex;
@@ -727,65 +855,90 @@
       </div>
     </section>
 
-<!-- Contact Us Page -->
-<h1>Contact <span style="color: goldenrod">Us</span></h1>
+    <!-- Contact Us Page -->
+    <h1>Contact <span style="color: goldenrod">Us</span></h1>
 
-<div class="contact-info">
-  <!-- Contact Details Section -->
-  <div class="contact-details">
-    <h2>Our Contact Information</h2>
+    <div class="contact-info">
+      <!-- Contact Details Section -->
+      <div class="contact-details">
+        <h2>Our Contact Information</h2>
 
-    <div class="contact-item">
-      <h3>Email</h3>
-      <p>
-        <a href="mailto:contact@yourcompany.com">contact@yourcompany.com</a>
-      </p>
-    </div>
+        <div class="contact-item">
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:vaishnavitours.bilaspur@gmail.com"
+              >vaishnavitours.bilaspur@gmail.com</a
+            >
+          </p>
+        </div>
 
-    <div class="contact-item">
-      <h3>Office Address</h3>
-      <p>
-        123 Main Street, Suite 456<br />
-        City, State, 7890
-      </p>
-    </div>
+        <div class="contact-item">
+          <h3>Office Address</h3>
+          <p>
+            123 Main Street, Suite 456<br />
+            City, State, 7890
+          </p>
+        </div>
 
-    <div class="contact-item">
-      <h3>Phone Number</h3>
-      <p>+1 987-654-3210</p>
-    </div>
-  </div>
-
-  <!-- Contact Form Section -->
-  <div class="contact-form">
-    <h2>Send Us a Message</h2>
-
-    <form action="#" method="POST">
-      <div class="form-group">
-        <label class="form-label" for="name">Your Name</label>
-        <input type="text" id="name" class="form-input" placeholder="Enter your name" required />
+        <div class="contact-item">
+          <h3>Phone Number</h3>
+          <a href="tel:+919244784443">+91 9244784443</a>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label class="form-label" for="email">Your Email</label>
-        <input type="email" id="email" class="form-input" placeholder="Enter your email" required />
+      <!-- Contact Form Section -->
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+
+        <form action="#" method="POST">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input
+              type="text"
+              id="name"
+              class="form-input"
+              placeholder="Enter your name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="email">Your Email</label>
+            <input
+              type="email"
+              id="email"
+              class="form-input"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Your Message</label>
+            <textarea
+              id="message"
+              class="form-input"
+              placeholder="What can we guide you with??"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Send Message
+            <svg
+              class="send-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path d="M2 12l18-7l-7 18l7-7l-18 7" />
+            </svg>
+          </button>
+        </form>
       </div>
-
-      <div class="form-group">
-        <label class="form-label" for="message">Your Message</label>
-        <textarea id="message" class="form-input" placeholder="Enter your message" rows="5" required></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn">
-        Send Message
-        <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <path d="M2 12l18-7l-7 18l7-7l-18 7" />
-        </svg>
-      </button>
-    </form>
-  </div>
-</div>
-
+    </div>
 
     <footer>
       <div class="container">
@@ -873,36 +1026,30 @@
   const chauffeurs = [
     {
       id: 1,
-      name: "Sumit Nayak",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80",
+      name: "Khemraj Sinha",
+      image: "Captain1.jpeg",
       experience: "5+ Years",
       rating: 4.9,
       trips: "1200",
       speciality: "Special Captain",
-      number: "+91 9876543210",
     },
     {
       id: 2,
-      name: "Deeptanu Bhunia",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80",
+      name: "Gulshan kesharwani",
+      image: "Captain2.jpeg",
       experience: "7+ Years",
       rating: 4.8,
       trips: "1000",
       speciality: "Luxury Chauffeur",
-      number: "+91 9876543210",
     },
     {
       id: 3,
-      name: "Sourav Kumar",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80",
+      name: "Lakshmi Narayan",
+      image: "Captain3.jpeg",
       experience: "4+ Years",
       rating: 4.8,
       trips: "800",
       speciality: "Local Expert",
-      number: "+91 9876543210",
     },
   ];
 
@@ -928,9 +1075,6 @@
                           <span>${chauffeur.trips}+</span>
                           <p>Trips</p>
                       </div>
-                  </div>
-                  <div class="chauffeur-contact">
-<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#A96424"><path d="M760-480q0-117-81.5-198.5T480-760v-80q75 0 140.5 28.5t114 77q48.5 48.5 77 114T840-480h-80Zm-160 0q0-50-35-85t-85-35v-80q83 0 141.5 58.5T680-480h-80Zm198 360q-125 0-247-54.5T329-329Q229-429 174.5-551T120-798q0-18 12-30t30-12h162q14 0 25 9.5t13 22.5l26 140q2 16-1 27t-11 19l-97 98q20 37 47.5 71.5T387-386q31 31 65 57.5t72 48.5l94-94q9-9 23.5-13.5T670-390l138 28q14 4 23 14.5t9 23.5v162q0 18-12 30t-30 12ZM241-600l66-66-17-94h-89q5 41 14 81t26 79Zm358 358q39 17 79.5 27t81.5 13v-88l-94-19-67 67ZM241-600Zm358 358Z"/></svg>                      <p>Contact no. : ${chauffeur.number}</p>
                   </div>
               </div>
           `;
