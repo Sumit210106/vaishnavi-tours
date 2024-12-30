@@ -18,7 +18,7 @@
       /* Hero Section */
       .hero-section {
         position: relative;
-        height: 100vh; 
+        height: 100vh;
         background-image: url("https://images.clickdealer.co.uk/blog/1061/featured_images/75ca2501382782fd251db4196a6d082c.jpg");
         background-size: cover;
         background-position: center;
@@ -278,20 +278,167 @@
         font-size: 3.5rem;
       }
 
-      .contact-form {
-        background-color: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(10px);
-        padding: 2rem;
-        border-radius: 1.5rem;
-        border: 1px solid rgba(184, 134, 11, 0.2);
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-      }
+/* Overall Contact Section Styling */
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem;
+  background: linear-gradient(145deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8));
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(12px);
+}
 
-      .contact-form:hover {
-        border-color: #b8860b;
-      }
+/* Contact Details Styling */
+.contact-details {
+  flex: 1;
+  padding: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading Style */
+.contact-details h2 {
+  font-size: 2.5rem;
+  color: #f0a500;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Contact Item Styling */
+.contact-item {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(184, 134, 11, 0.3);
+}
+
+.contact-item h3 {
+  font-size: 1.3rem;
+  color: #f0a500;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-item p {
+  font-size: 1.1rem;
+  color: #eaeaea;
+}
+
+.contact-item a {
+  color: #f0a500;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+  color: #b8860b;
+}
+
+/* Contact Form Styling */
+.contact-form {
+  flex: 1.5;
+  padding: 2.5rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact Form Heading */
+.contact-form h2 {
+  font-size: 2.5rem;
+  color: #f0a500;
+  margin-bottom: 2rem;
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  font-size: 1rem;
+  color: #d3d3d3;
+  margin-bottom: 0.75rem;
+}
+
+.form-input {
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(184, 134, 11, 0.2);
+  color: #ffffff;
+  font-size: 1.1rem;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #b8860b;
+  outline: none;
+  box-shadow: 0 0 8px rgba(184, 134, 11, 0.5);
+}
+
+/* Submit Button Styling */
+.submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #b8860b, #daa520);
+  color: white;
+  padding: 1.25rem 2rem;
+  border-radius: 1rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(to right, #8b6508, #b8860b);
+  transform: translateY(-2px);
+}
+
+.submit-btn:active {
+  transform: translateY(2px);
+}
+
+.submit-btn .send-icon {
+  margin-left: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: white;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .contact-info {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .contact-details,
+  .contact-form {
+    flex: none;
+    width: 100%;
+  }
+}
+
 
       .form-section {
         display: flex;
@@ -580,57 +727,65 @@
       </div>
     </section>
 
-    <h1>Contact <span style="color: goldenrod">Us</span></h1>
+<!-- Contact Us Page -->
+<h1>Contact <span style="color: goldenrod">Us</span></h1>
 
-    <!-- Contact us page -->
-    <form class="contact-form">
-      <div class="form-section">
-        <div class="grid">
-          <div class="form-group">
-            <label for="name" class="form-label">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              class="form-input"
-              placeholder="Sumit Nayak"
-            />
-          </div>
-          <div class="form-group">
-            <label for="phone" class="form-label">Phone Number</label>
-            <input
-              type="tel"
-              id="phone"
-              class="form-input"
-              placeholder="9876543210"
-            />
-          </div>
-        </div>
+<div class="contact-info">
+  <!-- Contact Details Section -->
+  <div class="contact-details">
+    <h2>Our Contact Information</h2>
 
-        <div class="form-group">
-          <label for="email" class="form-label">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            class="form-input"
-            placeholder="sumitnayak@gmail.com"
-          />
-        </div>
+    <div class="contact-item">
+      <h3>Email</h3>
+      <p>
+        <a href="mailto:contact@yourcompany.com">contact@yourcompany.com</a>
+      </p>
+    </div>
 
-        <div class="form-group">
-          <label for="message" class="form-label">Your Message</label>
-          <textarea
-            id="message"
-            rows="4"
-            class="form-input"
-            placeholder="Tell us about your transportation needs..."
-          ></textarea>
-        </div>
+    <div class="contact-item">
+      <h3>Office Address</h3>
+      <p>
+        123 Main Street, Suite 456<br />
+        City, State, 7890
+      </p>
+    </div>
 
-        <button type="submit" class="submit-btn">
-          <span>Send Message</span>
-        </button>
+    <div class="contact-item">
+      <h3>Phone Number</h3>
+      <p>+1 987-654-3210</p>
+    </div>
+  </div>
+
+  <!-- Contact Form Section -->
+  <div class="contact-form">
+    <h2>Send Us a Message</h2>
+
+    <form action="#" method="POST">
+      <div class="form-group">
+        <label class="form-label" for="name">Your Name</label>
+        <input type="text" id="name" class="form-input" placeholder="Enter your name" required />
       </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">Your Email</label>
+        <input type="email" id="email" class="form-input" placeholder="Enter your email" required />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="message">Your Message</label>
+        <textarea id="message" class="form-input" placeholder="Enter your message" rows="5" required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">
+        Send Message
+        <svg class="send-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M2 12l18-7l-7 18l7-7l-18 7" />
+        </svg>
+      </button>
     </form>
+  </div>
+</div>
+
 
     <footer>
       <div class="container">
@@ -723,7 +878,7 @@
         "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80",
       experience: "5+ Years",
       rating: 4.9,
-      trips: "2000",
+      trips: "1200",
       speciality: "Special Captain",
       number: "+91 9876543210",
     },
