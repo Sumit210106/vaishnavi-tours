@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Image with Divs</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+         body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            box-sizing: border-box;
+            background-color: #000000;
+        }
+
+        .mainofimg {
+            position: relative;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .img {
+            width: 100%;
+            height: 100vh; 
+            object-fit: cover;
+            filter: brightness(0.8);
+        }
+
+        .text-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+        }
+
+        .text {
+            color: #ffffff;
+            font-size: 110px;
+            font-weight: 700;
+            font-family: Arial, Helvetica, sans-serif, serif;
+            position: relative;
+            z-index: 2;
+            line-height: 1.2;
+            text-shadow: 10px 10px 0 rgba(0, 0, 0, 1.5); 
+        }
+
+        .text:before {
+            content: '"';
+            font-size: 180px;
+            color: rgba(255, 255, 255, 0.15); 
+            position: absolute;
+            top:-30px;
+            left: 160px;
+            z-index: 1;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .text {
+                font-size: 50px;
+                text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.3); 
+            }
+            .text:before {
+                font-size: 120px;
+                top: -60px;
+                left: -50px;
+            }
+        }
+
+        .mainofthree {
+            display: flex;
+            justify-content: space-evenly;
+            position: relative;
+            flex-wrap: wrap;
+            padding: 40px;
+            gap: 30px;
+            opacity: 0; 
+            animation: fadeInUp 0.6s ease-in-out forwards; 
+        }
+
+        .threedivs {
+            background: #1c1c1c;
+            border: 1px solid #ffd700;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            padding: 25px;
+            width: 30%;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+        }
+
+        .threedivs:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8); 
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #ffd700;
+            background-color: #3a3a3a;
+            border-radius: 50%;
+            padding: 15px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Scroll Animation */
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .scroll-animation.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media only screen and (max-width: 768px) {
+            .mainofthree {
+                flex-direction: column;
+                align-items: center;
+            }
+            .threedivs {
+                width: 90%;
+            }
+            .img {
+                height: 40vh; 
+            }
+            
+           
+        }
+
+        .carousel-container {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px;
+            scroll-behavior: smooth;
+        }
+
+        .carousel-item {
+            flex: 0 0 auto;
+            background: #1c1c1c;
+            border: 1px solid #ffd700;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .carousel-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="mainofimg">
+        <img class="img" src="assets/Reviewpageimage.png" alt="Background Image">
+        <div class="text-container">
+            <div class="text" >OUR REVIEWS</div>
+        </div>
+    </div>
+
+    <div class="mainofthree scroll-animation">
+        <div class="threedivs">
+            <div class="icon"><i class="fas fa-car"></i></div>
+            <h4>Smooth and Comfortable Ride!</h4>
+            <p>The journey was absolutely amazing! Highly recommend this service!</p>
+        </div>
+        <div class="threedivs">
+            <div class="icon"><i class="fas fa-clock"></i></div>
+            <h4>Excellent Service and Timely Arrival</h4>
+            <p>The service was top-notch! Everything went smoothly. Will choose this again!</p>
+        </div>
+        <div class="threedivs">
+            <div class="icon"><i class="fas fa-user-tie"></i></div>
+            <h4>Top-Notch Driver and Vehicle</h4>
+            <p>The team was professional and attentive, ensuring a seamless ride. Highly recommended!</p>
+        </div>
+    </div>
+    <script defer async src='https://cdn.trustindex.io/loader.js?d44fedf398651752ca369f36447'></script>
+    <script>
+       
+        const scrollElements = document.querySelectorAll(".scroll-animation");
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add("active");
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener("scroll", handleScrollAnimation);
+    </script>
+</body>
+</html>
