@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Cab Service Routes</title>
 
     <!-- Leaflet CSS -->
@@ -60,7 +60,7 @@
         color: var(--text-color);
         transition: background-color var(--transition-speed),
           color var(--transition-speed);
-        background-color: #50577a;
+        background-color: #2d324e;
       }
 
       /* HERO SECTION */
@@ -74,7 +74,6 @@
         );
         color: #fff;
         border-radius: 0 0 50% 50%;
-        /* margin-top: 60px; Height of the header */
       }
 
       .hero h1 {
@@ -218,7 +217,6 @@
           var(--secondary-color),
           var(--accent-color)
         );
-        /* padding: 2px; */
         border-radius: 16px;
         -webkit-mask: linear-gradient(#fff 0 0) content-box,
           linear-gradient(#fff 0 0);
@@ -272,85 +270,84 @@
       }
 
       /* Chat Icon */
-.chat-icon {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 60px;
-  height: 60px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it's above other elements */
-}
+      .chat-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000; /* Ensure it's above other elements */
+      }
 
-/* Chat Window */
-.chat-window {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 500px;
-  height: 700px;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: none; /* Initially hidden */
-  overflow: hidden;
-  z-index: 1000; /* Ensure it's above other elements */
-}
+      /* Chat Window */
+      .chat-window {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        width: 500px;
+        height: 700px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: none; /* Initially hidden */
+        overflow: hidden;
+        z-index: 1000; /* Ensure it's above other elements */
+      }
 
-.chat-window iframe {
-  width: 100%;
-  height: 100%;
-  border: 5px solid gray ;
-  overflow: hidden;
-  border-radius: 20px;
-}
+      .chat-window iframe {
+        width: 100%;
+        height: 100%;
+        border: 5px solid gray;
+        overflow: hidden;
+        border-radius: 20px;
+      }
 
-/* Responsive Styles for Chat Window */
-@media (max-width: 768px) {
-  .chat-window {
-    width: 90%;
-    height: 600px;
-    bottom: 80px;
-    right: 5%;
-    border-radius: 20px;
-  }
+      /* Responsive Styles for Chat Window */
+      @media (max-width: 768px) {
+        .chat-window {
+          width: 90%;
+          height: 600px;
+          bottom: 80px;
+          right: 5%;
+          border-radius: 20px;
+        }
 
-  .chat-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-    bottom: 15px;
-    right: 15px;
-  }
-}
+        .chat-icon {
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
+          bottom: 15px;
+          right: 15px;
+        }
+      }
 
-@media (max-width: 480px) {
-  .chat-window {
-    width: 90%;
-    height: 550px;
-    bottom: 70px;
-    right: 10;
-    border-radius: 20px;
-  }
+      @media (max-width: 480px) {
+        .chat-window {
+          width: 90%;
+          height: 550px;
+          bottom: 70px;
+          right: 10;
+          border-radius: 20px;
+        }
 
-  .chat-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 18px;
-    bottom: 10px;
-    right: 10px;
-  }
-}
-
+        .chat-icon {
+          width: 45px;
+          height: 45px;
+          font-size: 18px;
+          bottom: 10px;
+          right: 10px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -362,13 +359,17 @@
         destination.
       </p>
     </section>
+
     <!-- Chatbot -->
     <div class="chat-icon" onclick="toggleChat()">
-      chat 
+      chat
     </div>
     <div class="chat-window" id="chatWindow">
-    <iframe src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/27/15/20241227155545-410W8O1T.json"></iframe>
-  </div>
+      <iframe
+        src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/27/15/20241227155545-410W8O1T.json"
+      ></iframe>
+    </div>
+
     <!-- MAIN CONTENT -->
     <div class="container">
       <!-- Available Cab Routes Section -->
@@ -392,7 +393,7 @@
       1. Define all routes in two arrays: 
          - availableRoutes: Existing routes
          - odishaRoutes: Intercity Odisha Rates
-    */
+      */
       const availableRoutes = [
         {
           title: "Raipur ↔ Raigarh",
@@ -404,7 +405,7 @@
           extraCharge: "₹13 per km",
           from: { name: "Raipur", coords: [21.2514, 81.6296] },
           to: { name: "Raigarh", coords: [21.8982, 83.3966] },
-          color: "#3498db", // blue
+          color: "#3498db",
         },
         {
           title: "Raipur ↔ Korba",
@@ -416,7 +417,7 @@
           extraCharge: "₹13 per km",
           from: { name: "Raipur", coords: [21.2514, 81.6296] },
           to: { name: "Korba", coords: [22.4435, 83.1033] },
-          color: "#27ae60", // green
+          color: "#27ae60",
         },
         {
           title: "Bilaspur ↔ Korba",
@@ -428,7 +429,7 @@
           extraCharge: "₹13 per km",
           from: { name: "Bilaspur", coords: [22.0797, 82.1409] },
           to: { name: "Korba", coords: [22.4435, 83.1033] },
-          color: "#8e44ad", // purple
+          color: "#8e44ad",
         },
         {
           title: "Bilaspur Airport ↔ Korba Airport",
@@ -440,7 +441,7 @@
           extraCharge: "₹13 per km",
           from: { name: "Bilaspur Airport", coords: [22.1167, 82.1892] },
           to: { name: "Korba Airport", coords: [22.4435, 83.1033] },
-          color: "#f39c12", // orange
+          color: "#f39c12",
         },
         {
           title: "Bilaspur ↔ Raipur",
@@ -452,7 +453,7 @@
           extraCharge: "₹13 per km",
           from: { name: "Bilaspur", coords: [22.0797, 82.1409] },
           to: { name: "Raipur", coords: [21.2514, 81.6296] },
-          color: "#e74c3c", // red
+          color: "#e74c3c",
         },
         {
           title: "Bilaspur ↔ Raigarh",
@@ -464,9 +465,8 @@
           extraCharge: "₹13 per km",
           from: { name: "Bilaspur", coords: [22.0797, 82.1409] },
           to: { name: "Raigarh", coords: [21.8982, 83.3966] },
-          color: "#16a085", // teal
+          color: "#16a085",
         },
-        // Add more available routes here if needed
       ];
 
       const odishaRoutes = [
@@ -480,7 +480,7 @@
           extraCharge: "₹13 per km",
           from: { name: "Raigarh", coords: [21.8982, 83.3966] },
           to: { name: "Jharsuguda", coords: [21.4826, 84.9979] },
-          color: "#c0392b", // dark red
+          color: "#c0392b",
         },
         {
           title: "Sambalpur ↔ Raipur",
@@ -492,7 +492,7 @@
           extraCharge: "₹13 per km",
           from: { name: "Sambalpur", coords: [21.4668, 83.9823] },
           to: { name: "Raipur", coords: [21.2514, 81.6296] },
-          color: "#27ae60", // dark green
+          color: "#27ae60",
         },
         {
           title: "Raipur ↔ Bargarh",
@@ -504,14 +504,13 @@
           extraCharge: "₹13 per km",
           from: { name: "Raipur", coords: [21.2514, 81.6296] },
           to: { name: "Bargarh", coords: [21.2962, 83.6102] },
-          color: "#2980b9", // dark blue
+          color: "#2980b9",
         },
-        // Add more Odisha routes here if needed
       ];
 
       /*
       2. Function to create a route card (HTML) for each route
-    */
+      */
       function createRouteCard(route, index, containerId) {
         // Create a card container
         const card = document.createElement("div");
@@ -534,12 +533,12 @@
         // Fare for Sedan
         const fareSedanP = document.createElement("div");
         fareSedanP.className = "fare-sedan";
-        fareSedanP.innerHTML = `<span class="material-icons" aria-hidden="true">local_taxi</span> <strong>Fare (Sedan) :   </strong> ${route.fareSedan}`;
+        fareSedanP.innerHTML = `<span class="material-icons" aria-hidden="true">local_taxi</span> <strong>Fare (Sedan) : </strong> ${route.fareSedan}`;
 
         // Fare for SUV
         const fareSuvP = document.createElement("div");
         fareSuvP.className = "fare-suv";
-        fareSuvP.innerHTML = `<span class="material-icons" aria-hidden="true">airport_shuttle</span> <strong>Fare (SUV) :  </strong> ${route.fareSUV}`;
+        fareSuvP.innerHTML = `<span class="material-icons" aria-hidden="true">airport_shuttle</span> <strong>Fare (SUV) : </strong> ${route.fareSUV}`;
 
         // Append Sedan and SUV fares to fareDiv
         fareDiv.appendChild(fareSedanP);
@@ -548,7 +547,7 @@
         // Distance
         const distanceP = document.createElement("div");
         distanceP.className = "detail-item distance";
-        distanceP.innerHTML = `<span class="material-icons" aria-hidden="true">straighten</span> <strong>Distance     : </strong> ${route.distance}`;
+        distanceP.innerHTML = `<span class="material-icons" aria-hidden="true">straighten</span> <strong>Distance : </strong> ${route.distance}`;
 
         // Time
         const timeP = document.createElement("div");
@@ -558,13 +557,21 @@
         // Extra Charge
         const extraP = document.createElement("div");
         extraP.className = "detail-item extra-charge";
-        extraP.innerHTML = `<span class="material-icons" aria-hidden="true">currency_rupee</span> <strong> <pre>Extra-charge : </pre></strong> ${route.extraCharge}`;
+        extraP.innerHTML = `<span class="material-icons" aria-hidden="true">currency_rupee</span> <strong>Extra-charge : </strong> ${route.extraCharge}`;
 
-        // Append fare, distance, time, and extra charge to details container
+        // Book Now (new detail-item)
+        const bookNow = document.createElement("div");
+        bookNow.className = "detail-item";
+        // as of  now href is # 
+        bookNow.innerHTML = `<span class="material-icons" aria-hidden="true">call</span>
+                             <strong><a href="#" style="text-decoration: none;">Book Now</a></strong>`;
+
+        // Append fare, distance, time, extra charge, and Book Now to details container
         details.appendChild(fareDiv);
         details.appendChild(distanceP);
         details.appendChild(timeP);
         details.appendChild(extraP);
+        details.appendChild(bookNow);
 
         // Put title + details together
         info.appendChild(title);
@@ -573,6 +580,7 @@
         // map-container with unique ID
         const mapBorder = document.createElement("div");
         mapBorder.className = "map-container";
+
         const mapDiv = document.createElement("div");
         mapDiv.className = "map";
         mapDiv.id = `map_${containerId}_${index}`; // unique ID for the map
@@ -583,13 +591,12 @@
         card.appendChild(info);
         card.appendChild(mapBorder);
 
-        // Special Mention for Toll Charges (moved below the map)
+        // Special Mention for Toll Charges (below the map)
         const tollMention = document.createElement("div");
         tollMention.className = "toll-mention";
         tollMention.textContent = route.tollIncluded
           ? "Toll charges are included in the fare."
           : "Toll charges are not included.";
-
         card.appendChild(tollMention);
 
         // Append the card to the specified container
@@ -607,7 +614,7 @@
 
       /*
       3. Function to initialize Leaflet Map for a route
-    */
+      */
       function initializeMap(mapId, fromCoords, toCoords, title, color) {
         // Create the map
         const map = L.map(mapId, {
@@ -624,11 +631,12 @@
           attribution: "&copy; OpenStreetMap contributors",
         });
 
-        //google map style layout map
+        // Google-style map layer
         L.tileLayer("http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}", {
           maxZoom: 20,
           subdomains: ["mt0", "mt1", "mt2", "mt3"],
         }).addTo(map);
+
         // Add markers for from and to
         const fromMarker = L.marker(fromCoords)
           .addTo(map)
@@ -651,7 +659,7 @@
 
       /*
       4. Helper function to calculate center between two coordinates
-    */
+      */
       function getCenter(coords1, coords2) {
         return [(coords1[0] + coords2[0]) / 2, (coords1[1] + coords2[1]) / 2];
       }
@@ -659,7 +667,7 @@
       /*
       5. Helper function to get city name based on coordinates
          (In a real application, you'd use reverse geocoding. Here, we'll map manually.)
-    */
+      */
       function routeName(coords) {
         const [lat, lng] = coords;
         if (lat === 22.0797 && lng === 82.1409) return "Bilaspur";
@@ -675,7 +683,7 @@
 
       /*
       6. Render all route cards for Available Cab Routes
-    */
+      */
       const availableContainerId = "route-cards-available";
       availableRoutes.forEach((route, index) => {
         createRouteCard(route, index, availableContainerId);
@@ -683,22 +691,21 @@
 
       /*
       7. Render all route cards for Intercity Odisha Rates
-    */
+      */
       const odishaContainerId = "route-cards-odisha";
       odishaRoutes.forEach((route, index) => {
         createRouteCard(route, index, odishaContainerId);
       });
 
-
-      // chat bot toggle function 
-      function toggleChat() { 
-      const chatWindow = document.getElementById('chatWindow');
-      if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
-        chatWindow.style.display = 'block';
-      } else {
-        chatWindow.style.display = 'none';
+      // Chat bot toggle function
+      function toggleChat() {
+        const chatWindow = document.getElementById("chatWindow");
+        if (chatWindow.style.display === "none" || chatWindow.style.display === "") {
+          chatWindow.style.display = "block";
+        } else {
+          chatWindow.style.display = "none";
+        }
       }
-    }
     </script>
   </body>
 </html>
