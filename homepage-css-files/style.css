@@ -6,10 +6,10 @@
 
     --header-height:3.5rem;
 
-    --orange-color:hsl(210, 2%, 49%);
-    --green-color: hsl(180, 11%, 23%);
-    --blue-color:hsl(34, 6%, 23%);
-    --white-color:hsl(0,0%,100%);
+    --orange-color:hsl(61, 100%, 50%);
+    --green-color: hsl(61, 100%, 50%);
+    --blue-color:hsl(61, 100%, 50%);
+    --white-color:hsl(0, 0%, 0%);
     --black-color:hsl(210,8%,8%);
 
     --body-font:"Montserrat",sans-serif;
@@ -51,6 +51,7 @@ body{
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     color: var(--white-color);
+    background-color: var(--black-color);
 }
 
 ul{
@@ -171,7 +172,7 @@ img{
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: hsla(210, 8%, 8%, 0.2);
+    background-color: hsla(207, 5%, 40%, 0.185);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     top: 0;
@@ -183,12 +184,12 @@ img{
     position: relative;
     padding-top: 12rem;
     width: 100%;
-    height: 100vh;
+    height: 50vh;
 }
 
 .home__panel-1{
     width: 100%;
-    height: 40%;
+    height: 50%;
     background-color: var(--color-car);
     position: absolute;
     left: 0;
@@ -196,7 +197,7 @@ img{
 }
 .home__panel-2{
     width: 100%;
-    height: 60%;
+    height: 50%;
     background-color: var(--black-color);
     position: absolute;
     left: 0;
@@ -301,6 +302,111 @@ img{
     width: 100%;
     height: 100%;
 }
+die{
+    display: grid;
+    place-items: center;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    color: white;
+    /* height: 100vh; */
+  }
+
+  .hidden {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1.5s ease;
+  }
+
+  .show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+  }
+
+  .parent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .child {
+    width: 60px; /* Adjusted width for mobile */
+    height: 60px; /* Adjusted height for mobile */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease-in-out;
+    border-radius: 50%;
+    margin: 10px; /* Increased margin for spacing */
+  }
+
+  .logos {
+    display: flex;
+    flex-wrap: wrap; /* Allow logos to wrap on smaller screens */
+    justify-content: center;
+  }
+  .why{
+    font-size: var(--big-font-size);
+    margin: 3rem;
+    color: white;
+  }
+ .imagesforfun{
+    height: 100px;
+    margin: auto;
+    padding: 10px;
+  }
+  .specialized{
+    font-size: var(--big-font-size);
+    margin: 3rem;
+    color: white;
+  }
+
+  .logo {
+    margin: 1rem; /* Space between logos */
+    padding: 2rem; /* Padding to give a more spacious look */
+    background-color: var(--orange-color);
+    border-radius: 10px;
+    text-align: center;
+    width: 70%;
+    color: var(--black-color);
+
+  }
+
+  .logo:nth-child(2) {
+    transition-delay: 200ms;
+  }
+  .logo:nth-child(3) {
+    transition-delay: 400ms;
+  }
+  .logo:nth-child(4) {
+    transition-delay: 600ms;
+  }
+
+  .child:hover {
+    background-color: rgba(255, 253, 253, 0);
+    transform: rotate3d(0.5, 1, 0, 30deg) perspective(180px) rotateX(60deg) translateY(2px);
+    box-shadow: 0px 10px 10px rgb(1, 49, 182);
+  }
+
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 18px; /* Reduced font size */
+  }
+
+  .button:hover {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translate3d(0px, 0px, 15px) perspective(180px) rotateX(-35deg) translateY(2px);
+    border-radius: 50%;
+  }
 
 .home__social{
     position: absolute;
@@ -325,7 +431,7 @@ img{
 }
 
 .swiper {
-    height: 100vh; 
+    height: 80vh; 
 }
 .swiper-pagination {
     display: flex;
@@ -343,7 +449,7 @@ img{
 }
 
 .swiper-pagination .swiper-pagination-bullet-active {
-    background-color: var(--black-color); 
+    background-color: var(--black-color);  /* Dark gray/black color for active pagination */
 }
 
 .swiper-slide-active .home__img{
@@ -392,8 +498,7 @@ img{
         left: 0;
         right: 0;
         margin: 0 auto;
-    };
-}
+    };}
 
 @media screen and(min-width:1150px){
 
