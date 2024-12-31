@@ -140,3 +140,25 @@ document.addEventListener("DOMContentLoaded", function () {
       observer.observe(el);
     });
   });
+
+  const scrollElements = document.querySelectorAll(".scroll-animation");
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
+        };
+
+        const displayScrollElement = (element) => {
+            element.style.opacity = 1;
+            element.style.transform = 'translateY(0)';
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+window.addEventListener("scroll", handleScrollAnimation);
