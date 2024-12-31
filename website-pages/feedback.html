@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,77 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taxi Service Feedback</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), 
-                        url('') no-repeat center center/cover;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom right, #1e1e1e, #343434);
             color: white;
-            height: 100vh;
-            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
-            width: 70%;
-            margin: 50px auto;
-            padding: 60px;
-            background: rgba(255, 255, 255, 0.1);
+            width: 80%;
+            max-width: 900px;
+            background: #222;
+            padding: 40px;
             border-radius: 15px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
             animation: fadeIn 1.5s ease-in-out;
-            text-align: center;
         }
 
         h1 {
+            font-size: 2.5rem;
             text-align: center;
-            font-size: 3rem;
+            color: #f1c40f;
             margin-bottom: 20px;
-            color: #f39c12;
         }
 
         label {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             display: block;
             margin-top: 15px;
-            width: 90%;
-            text-align: left;
-        }
-
-        input, select, textarea, button {
-            width: 90%;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
+            color: #f7f7f7;
         }
 
         input, select, textarea {
-            background: rgba(255, 255, 255, 0.2);
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            border: none;
+            border-radius: 8px;
+            background: #333;
             color: white;
+            font-size: 1rem;
             outline: none;
         }
 
+        textarea {
+            resize: none;
+        }
+
         button {
-            background: #e67e22;
-            color: white;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 12px;
+            background: #f1c40f;
+            color: #222;
             font-weight: bold;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s, background 0.3s;
+            transition: all 0.3s ease;
         }
 
         button:hover {
-            background: #d35400;
+            background: #e67e22;
+            color: white;
             transform: scale(1.05);
         }
+
         .stars {
             display: flex;
+
             justify-content: space-evenly;text-align: center;
             margin: 10px ;
             padding-left: 100px;
             flex-direction: row-reverse;
+
+
+            justify-content: space-between;
+            margin-top: 8px;
 
         }
 
@@ -86,10 +100,9 @@
 
         .stars label {
             font-size: 2rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: #444;
             cursor: pointer;
-            margin: 5px;
-            transition: color 0.3s ease-out-in, transform 0.2s;
+            transition: color 0.3s, transform 0.2s;
         }
 
         .stars input:checked ~ label,
@@ -99,41 +112,60 @@
             transform: scale(1.2);
         }
 
+        .add-feedback {
+            text-align: center;
+            margin-top: 20px;
+        }
 
+        .add-feedback button {
+            background: #222;
+            color: #f1c40f;
+            border: 2px solid #f1c40f;
+            font-size: 1rem;
+            width: auto;
+            padding: 8px 16px;
+            transition: all 0.3s;
+        }
 
+        .add-feedback button:hover {
+            background: #f1c40f;
+            color: #222;
+        }
+
+        .feedback-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #333;
+            border-radius: 8px;
+        }
+
+        .remove-section {
+            background: #e74c3c;
+            color: white;
+            cursor: pointer;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 15px;
+            transition: background 0.3s;
+        }
+
+        .remove-section:hover {
+            background: #c0392b;
+        }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(50px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-        .feedback-section {
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            backdrop-filter: blur(12px);
-        }
-        
-        .remove-section {
-            background: #ff9532;
-            color: white;
-            cursor: pointer;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s ease-in-out;
-        }
-
-        .remove-section:hover {
-            background: #e74c3c;
-        }
     </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -141,10 +173,10 @@
         <form id="feedbackForm">
             <label for="name">Your Name:</label>
             <input type="text" id="name" name="name" placeholder="Enter your name" required>
-            
+
             <label for="email">Your Email:</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
-            
+
             <label for="contact">Contact Number:</label>
             <input type="tel" id="contact" name="contact" placeholder="Enter your contact number">
 
@@ -157,21 +189,17 @@
                 <option value="Vehicle">Vehicle</option>
                 <option value="Journey">Journey</option>
             </select>
-            
+
             <label for="rating">Service Rating:</label>
             <div class="stars">
                 <input type="radio" id="star5" name="rating" value="5">
                 <label for="star5">&#9733;</label>
-
                 <input type="radio" id="star4" name="rating" value="4">
                 <label for="star4">&#9733;</label>
-
                 <input type="radio" id="star3" name="rating" value="3">
                 <label for="star3">&#9733;</label>
-
                 <input type="radio" id="star2" name="rating" value="2">
                 <label for="star2">&#9733;</label>
-
                 <input type="radio" id="star1" name="rating" value="1">
                 <label for="star1">&#9733;</label>
             </div>
@@ -181,22 +209,18 @@
 
             <div class="add-feedback">
                 <span>Want to add feedback for more than one category?</span>
-                <button type="button" id="addMore">+</button>
+                <button type="button" id="addMore">Add Feedback</button>
             </div>
 
             <button type="submit">Submit Feedback</button>
         </form>
-
-        
     </div>
 
     <script>
         document.getElementById('addMore').addEventListener('click', function() {
-            // Create new feedback section
             const newSection = document.createElement('div');
             newSection.classList.add('feedback-section');
-            
-            // Add Feedback Type dropdown
+
             const feedbackTypeLabel = document.createElement('label');
             feedbackTypeLabel.innerHTML = 'Feedback Type:';
             const feedbackTypeSelect = document.createElement('select');
@@ -209,7 +233,6 @@
             newSection.appendChild(feedbackTypeLabel);
             newSection.appendChild(feedbackTypeSelect);
 
-            // Add Rating stars
             const ratingLabel = document.createElement('label');
             ratingLabel.innerHTML = 'Service Rating:';
             const starsDiv = document.createElement('div');
@@ -229,7 +252,6 @@
             newSection.appendChild(ratingLabel);
             newSection.appendChild(starsDiv);
 
-            // Add comments field
             const commentsLabel = document.createElement('label');
             commentsLabel.innerHTML = 'Your Feedback:';
             const commentsTextarea = document.createElement('textarea');
@@ -239,7 +261,6 @@
             newSection.appendChild(commentsLabel);
             newSection.appendChild(commentsTextarea);
 
-            // Add remove section button
             const removeButton = document.createElement('button');
             removeButton.classList.add('remove-section');
             removeButton.innerHTML = 'Remove this Feedback';
@@ -248,10 +269,37 @@
             });
             newSection.appendChild(removeButton);
 
-            // Add new section to the form
             document.querySelector('form').appendChild(newSection);
         });
     </script>
-    
+     <script>
+        
+        emailjs.init('-KAL8dhf9nwGDKtZQ'); // Replace with your EmailJS public key
+    document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        // Initialize EmailJS
+        const serviceID = 'service_yqjy5gk'; // Replace with your Service ID
+        const templateID = 'template_5evkann'; // Replace with your Template ID
+        const formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            contact: document.getElementById('contact').value,
+            vehicleNumber: document.getElementById('vehicleNumber').value,
+            feedbackType: document.getElementById('feedbackType').value,
+            rating: document.querySelector('input[name="rating"]:checked')?.value || 'No Rating',
+            comments: document.getElementById('comments').value,
+        };
+        console.log('Sending data to EmailJS:', formData);
+        emailjs.send(serviceID, templateID, formData)
+            .then(() => {
+                alert('Feedback sent successfully!');
+                document.getElementById('feedbackForm').reset();
+            })
+            .catch((error) => {
+                console.error('Error sending feedback:', error);
+                alert(`Failed to send feedback. Error: ${error.text || error}`);
+            });
+    });
+</script>
 </body>
 </html>
