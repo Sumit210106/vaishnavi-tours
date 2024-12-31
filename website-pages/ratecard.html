@@ -285,6 +285,7 @@
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1002;
       }
       .chat-icon:hover,
       .modal-button:hover {
@@ -660,9 +661,9 @@
         // Book Now (new detail-item)
         const bookNow = document.createElement("div");
         bookNow.className = "detail-item";
-        // as of  now href is # 
+
         bookNow.innerHTML = `<span class="material-icons" aria-hidden="true">call</span>
-                             <strong><a href="#" style="text-decoration: none;">Book Now</a></strong>`;
+                     <button onclick="toggleContact()"><strong>Book Now</strong></button>`;
 
         // Append fare, distance, time, extra charge, and Book Now to details container
         details.appendChild(fareDiv);
