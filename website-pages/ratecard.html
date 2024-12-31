@@ -60,7 +60,7 @@
         color: var(--text-color);
         transition: background-color var(--transition-speed),
           color var(--transition-speed);
-        background-color: #2d324e;
+        background-color: rgb(17, 15, 15);
       }
 
       /* HERO SECTION */
@@ -69,8 +69,7 @@
         text-align: center;
         background: linear-gradient(
           135deg,
-          var(--secondary-color),
-          var(--accent-color)
+          rgb(220, 220, 21), rgb(179, 120, 10)
         );
         color: #fff;
         border-radius: 0 0 50% 50%;
@@ -269,14 +268,14 @@
         }
       }
 
-      /* Chat Icon */
+      
       .chat-icon {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        width: 60px;
-        height: 60px;
-        background-color: #007bff;
+        width: 70px;
+        height: 70px;
+        background-color: #e7951b;
         color: white;
         border-radius: 50%;
         display: flex;
@@ -285,68 +284,148 @@
         font-size: 24px;
         cursor: pointer;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        z-index: 1000; /* Ensure it's above other elements */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .chat-icon:hover,
+      .modal-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
       }
 
-      /* Chat Window */
+      .chat-icon i,
+      .modal-button i {
+        transition: transform 0.3s ease;
+      }
+      .chat-icon:hover i {
+        transform: rotate(15deg);
+      }
+      
       .chat-window {
         position: fixed;
-        bottom: 90px;
-        right: 20px;
-        width: 500px;
+        bottom: 120px;
+        right: 15px;
+        width: 385px;
         height: 700px;
-        background-color: white;
-        border: 1px solid #ccc;
+        background-color: black;
         border-radius: 20px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        display: none; /* Initially hidden */
+        display: none;
         overflow: hidden;
-        z-index: 1000; /* Ensure it's above other elements */
+        z-index: 1000;
+        animation: slideUp 0.5s ease-out;
       }
-
+      @keyframes slideUp {
+        0% {
+          bottom: -700px;
+        }
+        100% {
+          bottom: 90px;
+        }
+      }
       .chat-window iframe {
-        width: 100%;
-        height: 100%;
-        border: 5px solid gray;
+        width: 99%;
+        height: 99%;
         overflow: hidden;
         border-radius: 20px;
       }
 
-      /* Responsive Styles for Chat Window */
-      @media (max-width: 768px) {
-        .chat-window {
-          width: 90%;
-          height: 600px;
-          bottom: 80px;
-          right: 5%;
-          border-radius: 20px;
-        }
+      .modal-button {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 70px;
+        height: 70px;
+        background-color: #e7951b;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1000;
+      }
 
-        .chat-icon {
-          width: 50px;
-          height: 50px;
-          font-size: 20px;
-          bottom: 15px;
-          right: 15px;
+      .modal-button:hover {
+        background-color: rgb(59, 36, 129);
+      }
+
+      .modal-button:hover i {
+        transform: rotate(-15deg);
+      }
+
+      .modal-box {
+        position: fixed;
+        right: 50%;
+        left: 50%;
+        top: 40%;
+        bottom: 50%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        max-width: 380px;
+        width: 65%;
+        border-radius: 24px;
+        padding: 30px 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        z-index: 1000;
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
         }
       }
 
-      @media (max-width: 480px) {
-        .chat-window {
-          width: 90%;
-          height: 550px;
-          bottom: 70px;
-          right: 10;
-          border-radius: 20px;
-        }
+      .modal-box button {
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        font-size: 24px;
+        margin: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease;
+      }
 
-        .chat-icon {
-          width: 45px;
-          height: 45px;
-          font-size: 18px;
-          bottom: 10px;
-          right: 10px;
-        }
+      .modal-box button:hover {
+        transform: scale(1.1);
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 998;
+      }
+
+      .overlay.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal.show .modal-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 40px;
+        height: fit-content;
+      }
+
+      .modal.show .overlay {
+        opacity: 1;
+        pointer-events: all;
       }
     </style>
   </head>
@@ -360,10 +439,29 @@
       </p>
     </section>
 
-    <!-- Chatbot -->
+    <!-- Chatbot and contact-->
+    <section id="contact-icon" class="modal">
+      <button class="modal-button" onclick="toggleContact()">
+        <i class="fa-solid fa-envelope"></i>
+      </button>
+      <div class="overlay" onclick="toggleContact()"></div>
+      <div class="modal-box">
+        <button onclick="window.location.href='tel:+919244784443'">
+          <i class="fa-solid fa-phone-alt"></i>
+        </button>
+
+        <button onclick="window.location.href='https://wa.me/9244784443'">
+          <i class="fa-brands fa-whatsapp"></i>
+        </button>
+      </div>
+    </section>
+
     <div class="chat-icon" onclick="toggleChat()">
-      chat
+      <i class="fa-solid fa-comment-dots"></i>
+
     </div>
+
+
     <div class="chat-window" id="chatWindow">
       <iframe
         src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/27/15/20241227155545-410W8O1T.json"
@@ -700,11 +798,16 @@
       // Chat bot toggle function
       function toggleChat() {
         const chatWindow = document.getElementById("chatWindow");
-        if (chatWindow.style.display === "none" || chatWindow.style.display === "") {
-          chatWindow.style.display = "block";
-        } else {
-          chatWindow.style.display = "none";
-        }
+        chatWindow.style.display =
+          chatWindow.style.display === "none" || chatWindow.style.display === ""
+            ? "block"
+            : "none";
+      }
+
+
+      function toggleContact() {
+        const modal = document.getElementById("contact-icon");
+        modal.classList.toggle("show");
       }
     </script>
   </body>

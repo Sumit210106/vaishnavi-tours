@@ -566,7 +566,7 @@ button {
 }
 
 @media screen and (min-width: 450px) {
-  .home__img,.home__img2,.home__img3 {
+  .home__img {
     left: 0;
     right: 0;
     margin: 0 auto;
