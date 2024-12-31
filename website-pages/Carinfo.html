@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+        
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+        rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/homepage-css-files/footer-style.css" />
+        <title>Vaishnavi Tours</title>
+        <style>
+            
+            body {
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #303030;
+            }
+            h2, .card-title {
+                font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+            
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .category {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .category h2 {
+            background-color: #212121;
+            padding: 20px;
+            margin: 10px 5px;
+            border-radius: 10px;
+            box-shadow: 0 4px rgba(255, 255, 255, 0.5);
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+
+        .card {
+            background-color: #777;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction:column-reverse;
+            justify-content:space-between;
+            width: 300px; 
+            height: 400px; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 0 10px;
+            display: inline-block;
+            padding: 30px;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background-color: #f2bb07;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding:15px;
+            flex-grow: 1;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            color: #f5a623;
+            margin-bottom: 10px;
+        }
+
+        .rating span {
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin-left: 5px;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+
+        .details {
+            font-size: 0.9rem;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: 90%;
+                margin: 10px auto;
+            }
+
+            .category h2 {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .slider-track {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+                height: auto;
+            }
+
+            .card img {
+                height: auto;
+            }
+
+            .card-body {
+                padding: 10px;
+            }
+
+            .category h2 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+        }
+        .book-now {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #a41600;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .book-now:hover {
+            background-color: #424141;
+            
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: 90%; 
+                margin: 10px auto;
+            }
+
+            .category h2 {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .slider-track {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+                height: auto;
+            }
+
+            .card img {
+                height: auto; 
+            }
+
+            .card-body {
+                padding: 10px;
+            }
+
+            .category h2 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+        }
+        footer {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+  background: #121315;
+}
+footer ul {
+  list-style: none;
+}
+footer p {
+  color: #fff;
+  max-width: 25em;
+  font-size: 0.9em;
+  line-height: 23px;
+}
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+}
+.footer .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+}
+.brand {
+  display: block;
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+.media-icons li,
+.services-icons li {
+  display: inline-block;
+  margin: 0.5em 0.5em 0.5em 0;
+}
+.media-icons a {
+  font-size: 1.1em;
+  width: 2em;
+  height: 2em;
+  border: 1px #fff solid;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.3s;
+}
+.media-icons a:hover {
+  background: #fff;
+  color: #111;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border-top: 1px solid rgba(138, 208, 153, 0.36);
+  padding: 2em;
+}
+.mekk{
+  margin: auto;
+  padding: auto;
+  text-align: center;
+}
+.footer .menu {
+  margin-bottom: 1em;
+}
+.footer .menu li {
+  display: inline-block;
+  margin: 0 0.7em 0.7em 0;
+  text-align: center;
+}
+.footer .menu a {
+  transition: 0.3s;
+  font-weight: 600;
+}
+.footer .menu a:hover {
+  color: #94fbab;
+}
+/* == responsive == */
+@media screen and (max-width: 900px) {
+  .footer .container {
+    flex-direction: column;
+  }
+}
+.chat-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 70px;
+        height: 70px;
+        background-color: #e7951b;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1002;
+      }
+      .chat-icon:hover,
+      .modal-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .chat-icon i,
+      .modal-button i {
+        transition: transform 0.3s ease;
+      }
+      .chat-icon:hover i {
+        transform: rotate(15deg);
+      }
+      
+      .chat-window {
+        position: fixed;
+        bottom: 120px;
+        right: 15px;
+        width: 385px;
+        height: 700px;
+        background-color: black;
+        border-radius: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: none;
+        overflow: hidden;
+        z-index: 1000;
+        animation: slideUp 0.5s ease-out;
+      }
+      @keyframes slideUp {
+        0% {
+          bottom: -700px;
+        }
+        100% {
+          bottom: 90px;
+        }
+      }
+      .chat-window iframe {
+        width: 99%;
+        height: 99%;
+        overflow: hidden;
+        border-radius: 20px;
+      }
+      .modal-button {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        width: 70px;
+        height: 70px;
+        background-color: #e7951b;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        z-index: 1000;
+      }
+
+      .modal-button:hover {
+        background-color: rgb(59, 36, 129);
+      }
+
+      .modal-button:hover i {
+        transform: rotate(-15deg);
+      }
+
+      .modal-box {
+        position: fixed;
+        right: 50%;
+        left: 50%;
+        top: 40%;
+        bottom: 50%;
+        transform: translateX(-50%);
+        background-color: #120c0c;
+        max-width: 380px;
+        width: 65%;
+        border-radius: 24px;
+        padding: 30px 20px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        z-index: 1000;
+        animation: fadeIn 0.5s ease-out forwards;
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .modal-box button {
+        width: 95px;
+        height: 95px;
+        border-radius: 50%;
+        font-size: 24px;
+        margin: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.3s ease;
+      }
+
+      .modal-box button:hover {
+        transform: scale(1.1);
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+        z-index: 998;
+      }
+
+      .overlay.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .modal.show .modal-box {
+        display: flex;
+        justify-content: space-between;
+        padding: 40px 40px;
+        height: fit-content;
+      }
+
+      .modal.show .overlay {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="category">
+            <h2>Hatchback</h2>
+            <div class="slider" id="hatchback">
+                <div class="slider-track">
+                    <div class="card">
+                        <img src="../images/baleno.png" alt="Car 6">
+                        <div class="card-body">
+                            <h3 class="card-title">MARUTI BALENO</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>4 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/swift.png" alt="Car 5">
+                        <div class="card-body">
+                            <h3 class="card-title">MARUTI SWIFT</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>4 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/alto.png" alt="Car 5">
+                        <div class="card-body">
+                            <h3 class="card-title">MARUTI ALTO</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>3 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="category">
+            <h2>Sedan</h2>
+            <div class="slider" id="sedan">
+                <div class="slider-track">
+                    <div class="card">
+                        <img src="../images/zest.png" alt="Car 1">
+                        <div class="card-body">
+                            <h3 class="card-title">TATA ZEST</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>4 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/amaze.png" alt="Car 5">
+                        <div class="card-body">
+                            <h3 class="card-title">HONDA AMAZE</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>4 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/dzire.png" alt="Car 5">
+                        <div class="card-body">
+                            <h3 class="card-title">MARUTI DZIRE</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>4 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="category">
+            <h2>SUV</h2>
+            <div class="slider" id="suv">
+                <div class="slider-track">
+                    <div class="card">
+                        <img src="../images/innova.png" alt="Car 2">
+                        <div class="card-body">
+                            <h3 class="card-title">TOYOTA INNOVA</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>7 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/crysta.png" alt="Car 3">
+                        <div class="card-body">
+                            <h3 class="card-title">TOYOTA CRYSTA</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>8 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/ertiga.png" alt="Car 4">
+                        <div class="card-body">
+                            <h3 class="card-title">ERTIGA</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>7 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="../images/triber.png" alt="Car 6">
+                        <div class="card-body">
+                            <h3 class="card-title">RENAULT TRIBER</h3>
+                            <div class="details">Air Conditioner</div>
+                            <div class="rating"><span>7 Seats</span></div>
+                            <a href="#" class="book-now">Book Now</a>
+                        </div>
+                    </div>
+    <section id="contact-icon" class="modal">
+        <button class="modal-button" onclick="toggleContact()">
+          <i class="fa-solid fa-envelope"></i>
+        </button>
+        <div class="overlay" onclick="toggleContact()"></div>
+        <div class="modal-box">
+          <button onclick="window.location.href='tel:+919244784443'">
+            <i class="fa-solid fa-phone-alt"></i>
+          </button>
+  
+          <button onclick="window.location.href='https://wa.me/9244784443'">
+            <i class="fa-brands fa-whatsapp"></i>
+          </button>
+        </div>
+      </section>
+  
+      <div class="chat-icon" onclick="toggleChat()">
+        <i class="fa-solid fa-robot"></i>
+  
+      </div>
+  
+  
+      <div class="chat-window" id="chatWindow">
+        <iframe
+          src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/27/15/20241227155545-410W8O1T.json"
+        ></iframe>
+      </div>
+  
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+          <div class="col1">
+            <a href="#" class="brand">Vaishnavi Tours</a>
+            <ul class="media-icons">
+              <li>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-discord"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col2">
+            <ul class="menu">
+              <li><a href="#">Home</a></li>
+              <li><a href="aboutus.html">About</a></li>
+              <li><a href="service_network.html">Services</a></li>
+              <li><a href='tel:8169200792'>Contact</a></li>
+              <p>Thank you for visiting [Your Website Name]. We strive to provide the best services and experiences for our customers. If you have any questions or need assistance, feel free to reach out to us. Your satisfaction is our top priority.</p>
+            </ul>
+          </div>
+          <div class="col3">
+              <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+      <dotlottie-player src="https://lottie.host/84674a7c-3568-4998-9f88-536b335f1a46/9dTVBTUDGF.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+            <div class="footer-bottom">
+          </div>
+          <div class="mekk">
+            <p> &COPY; Vaishnavi Tours - All Rights Reserved</p>
+          </div>
+        </div>
+      </footer>
+      <script>
+              function toggleChat() {
+        const chatWindow = document.getElementById("chatWindow");
+        chatWindow.style.display =
+          chatWindow.style.display === "none" || chatWindow.style.display === ""
+            ? "block"
+            : "none";
+      }
+
+
+      function toggleContact() {
+        const modal = document.getElementById("contact-icon");
+        modal.classList.toggle("show");
+      }
+      window.addEventListener('load', function() {
+            document.querySelector('.loading-overlay').style.display = 'none';
+            document.body.classList.remove('hidden');
+        });
+      </script>   
+</body>
+</html>
