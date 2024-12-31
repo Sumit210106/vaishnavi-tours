@@ -1,4 +1,3 @@
-/*=============== SHOW MENU ===============*/
 const navMenu = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),
       navClose = document.getElementById('nav-close')
@@ -87,7 +86,7 @@ const iconMap = {
 };
 
 function fetchWeather(latitude, longitude) {
-  const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  const apiURL = https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey};
   fetch(apiURL)
     .then(response => response.json())
     .then(data => {
@@ -97,8 +96,8 @@ function fetchWeather(latitude, longitude) {
 
       // Update DOM with Font Awesome Icon and Text
       const weatherIcon = iconMap[iconCode] || 'fa-question-circle'; // Default to question mark
-      document.getElementById('weather-icon').className = `fas ${weatherIcon}`;
-      document.getElementById('weather-text').textContent = `${temperature}°C, ${cityName}`;
+      document.getElementById('weather-icon').className = fas ${weatherIcon};
+      document.getElementById('weather-text').textContent = ${temperature}°C, ${cityName};
     })
     .catch(error => {
       console.error('Error fetching weather data:', error);
