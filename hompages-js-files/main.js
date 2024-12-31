@@ -57,8 +57,8 @@ const blurHeader = () =>{
     // Add a class if the bottom offset is greater than 50 of the viewport
     this.scrollY >= 50 ? header.classList.add('blur-header') 
                        : header.classList.remove('blur-header')
-                       window.addEventListener('scroll', blurHeader)
-}
+                    }
+window.addEventListener('scroll', blurHeader)
 
 
 const apiKey = 'c2a177b38371233ec459d1158924de81';
@@ -86,7 +86,7 @@ const iconMap = {
 };
 
 function fetchWeather(latitude, longitude) {
-  const apiURL = https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey};
+  const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
   fetch(apiURL)
     .then(response => response.json())
     .then(data => {
@@ -96,8 +96,8 @@ function fetchWeather(latitude, longitude) {
 
       // Update DOM with Font Awesome Icon and Text
       const weatherIcon = iconMap[iconCode] || 'fa-question-circle'; // Default to question mark
-      document.getElementById('weather-icon').className = fas ${weatherIcon};
-      document.getElementById('weather-text').textContent = ${temperature}°C, ${cityName};
+      document.getElementById('weather-icon').className = `fas ${weatherIcon}`;
+      document.getElementById('weather-text').textContent = `${temperature}°C, ${cityName}`;
     })
     .catch(error => {
       console.error('Error fetching weather data:', error);
