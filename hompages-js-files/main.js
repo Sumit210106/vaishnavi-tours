@@ -1,4 +1,3 @@
-/*=============== SHOW MENU ===============*/
 const navMenu = document.getElementById('nav-menu'),
       navToggle = document.getElementById('nav-toggle'),
       navClose = document.getElementById('nav-close')
@@ -29,18 +28,21 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 
 
 
-const swiperHome = new Swiper('.home__swiper',{
+const swiperHome = new Swiper('.home__swiper', {
     speed: 1200,
     effect: 'fade',
-    
+    loop: true,  // Enables infinite looping
+    autoplay: {
+        delay: 2500,  // Changes slide every 3 seconds
+        disableOnInteraction: false  // Allows autoplay to continue after user interaction
+    },
     pagination: {
         el: '.swiper-pagination',
         clickable: true,
-        renderBullet: (index, className) =>{
-            return '<span class="' + className + '">' +String(index + 1).padStart(2,'0') + "</span>";
-        },
     },
+    navigation: false,  // Removes navigation buttons
 });
+
 
 
 gsap.from('.home__panel-1',{y:-1000,duration:2})
@@ -84,7 +86,7 @@ const iconMap = {
 };
 
 function fetchWeather(latitude, longitude) {
-  const apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`;
+  const apiURL = https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey};
   fetch(apiURL)
     .then(response => response.json())
     .then(data => {
@@ -94,8 +96,8 @@ function fetchWeather(latitude, longitude) {
 
       // Update DOM with Font Awesome Icon and Text
       const weatherIcon = iconMap[iconCode] || 'fa-question-circle'; // Default to question mark
-      document.getElementById('weather-icon').className = `fas ${weatherIcon}`;
-      document.getElementById('weather-text').textContent = `${temperature}°C, ${cityName}`;
+      document.getElementById('weather-icon').className = fas ${weatherIcon};
+      document.getElementById('weather-text').textContent = ${temperature}°C, ${cityName};
     })
     .catch(error => {
       console.error('Error fetching weather data:', error);
