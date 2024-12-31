@@ -5,40 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy and Policy - Vaishnavi Tours</title>
     <style>
-
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+            background-color: rgb(36, 36, 36);
+            color: whitesmoke;
             line-height: 1.6;
+            font-size: large;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-in-out forwards;
         }
-    
-    @media screen and (max-width: 768px) {
 
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-    }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                max-width: 1200px;
+                margin: 20px auto;
+                padding: 20px;
+                background: #202020;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 8px;
+            }
+        }
 
         h1 {
             text-align: center;
-            color: #0056b3;
+            color: yellow;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        h1:hover {
+            color: orange;
         }
 
         h2 {
-            color: #0056b3;
+            color: yellow;
             margin-top: 20px;
+            transition: color 0.3s ease;
         }
 
-        p {
+        h2:hover {
+            color: orange;
+        }
+
+        p, ul li {
             margin: 10px 0;
+            transition: color 0.3s ease;
+        }
+
+        p:hover, ul li:hover {
+            color: lightblue;
         }
 
         ul {
@@ -48,11 +72,22 @@
 
         .section {
             margin-bottom: 20px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .section:hover {
+            transform: scale(1.02);
+            background: #303030;
         }
 
         .important {
             font-weight: bold;
             color: #d9534f;
+            transition: color 0.3s ease;
+        }
+
+        .important:hover {
+            color: #ff6347;
         }
 
         .footer {
@@ -60,6 +95,11 @@
             margin-top: 20px;
             font-size: 0.9em;
             color: #777;
+            transition: color 0.3s ease;
+        }
+
+        .footer:hover {
+            color: #aaa;
         }
     </style>
 </head>
@@ -68,26 +108,26 @@
         <h1>Privacy and Policy</h1>
 
         <div class="section">
-            <h2>General Rental Payments</h2>
+            <h2><li>General Rental Payments</li></h2>
             <p>All rental payments are to be made by <strong>Cash</strong> or <strong>Bank Transfers</strong>.</p>
             <ul>
                 <li><span class="important">30% Payment in Advance</span> as a Booking Amount (non-refundable) for outstation trips.</li>
                 <li>The driver will collect the balance full payment at the pickup point (Hotel, Airport, Railway Station, or Home).</li>
                 <li>Please ensure the safety of your belongings before leaving the cab. Vaishnavi Tours is not responsible for any loss.</li>
-                <li>Delays caused by unavoidable circumstances such as traffic jams, breakdowns, accidents, or severe weather conditions are not the responsibility of Vaishnavi Tours.</li>
+                <li class="important"> Delays caused by unavoidable circumstances such as traffic jams, breakdowns, accidents, or severe weather conditions are not the responsibility of Vaishnavi Tours.</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>Online Payments</h2>
+            <h2><li>Online Payments</li></h2>
             <ul>
-                <li>If your payment via Credit Card, Debit Card, or Net Banking is declined or fails, you must call Vaishnavi Tours 72 hours before departure for alternate payment instructions. Otherwise, the booking is liable to be canceled.</li>
+                <li>If your payment via Credit Card, Debit Card, or Net Banking is <span class="important"> declined or fails</span>, you must call Vaishnavi Tours 72 hours before departure for alternate payment instructions. Otherwise, the booking is liable to be canceled.</li>
                 <li>Online payments through our website may take <span class="important">24 to 36 hours</span> to reflect in our account. Services will only be confirmed once the payment is received.</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>Complete Tour Packages (Hotels + Car)</h2>
+            <h2><li>Complete Tour Packages (Hotels + Car)</li></h2>
             <ul>
                 <li>All payments can be made by Cash, Bank Transfers, Net Banking, Credit Card, or Debit Card.</li>
                 <li><span class="important">60% Payment in Advance</span> is required as a Booking Amount (non-refundable).</li>
@@ -95,7 +135,7 @@
                 <li>Please ensure the safety of your belongings before leaving the cab or hotels. Vaishnavi Tours is not responsible for any loss.</li>
                 <li>In case of unforeseen circumstances, Vaishnavi Tours reserves the right to modify the itinerary for the safety of passengers.</li>
                 <li>Carry valid ID proofs (e.g., Passport) during travel and hotel check-ins. Vaishnavi Tours is not responsible for issues related to invalid IDs.</li>
-                <li>Hotel check-in time is <strong>1 PM</strong> and check-out time is <strong>11 AM</strong>. Additional charges may apply for early check-in or late check-out.</li>
+                <li class="important">Hotel check-in time is <strong>1 PM</strong> and check-out time is <strong>11 AM</strong>. Additional charges may apply for early check-in or late check-out.</li>
             </ul>
         </div>
 
@@ -104,12 +144,4 @@
         </div>
     </div>
 </body>
-<div id="footer"></div>
-<script>
-    fetch('footer.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('footer').innerHTML = data;
-        });
-</script>
 </html>
