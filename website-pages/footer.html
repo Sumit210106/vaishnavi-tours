@@ -9,219 +9,47 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet"
     />
-    <style>
-      @media screen and (max-width: 480px) {
-        body {
-          background-color: rgb(44, 43, 43);
-        }
-      }
+    <link rel="stylesheet" href="/homepage-css-files/footer-style.css" />
 
-      .new_footer_area {
-        background: rgb(26, 26, 26);
-      }
-
-      .new_footer_top {
-        padding: 120px 0px 270px;
-        position: relative;
-        overflow-x: hidden;
-      }
-
-      .footer_bottom {
-        font-size: 14px;
-        font-weight: 300;
-        line-height: 20px;
-        color: whitesmoke;
-        padding: 27px 0px;
-      }
-
-      .things {
-        display: flex;
-        flex-direction: column;
-        gap: 10px; /* Increased gap for more spacing between the links */
-        font-size: large;
-        display: inline;
-        margin: 10px;
-      }
-
-      .things a {
-        color: whitesmoke;
-        text-decoration: none;
-        font-size: inherit;
-        font-weight: 400;
-      }
-
-      .things a:hover {
-        color: yellow;
-        text-decoration: underline;
-      }
-
-      .new_footer_top .company_widget p {
-        font-size: 16px;
-        font-weight: 300;
-        line-height: 28px;
-        color: whitesmoke;
-        margin-bottom: 20px;
-      }
-
-      .new_footer_top .f_widget.about-widget .f_list li {
-        margin-bottom: 15px;
-      }
-
-      .f_widget.about-widget .f_list li:last-child {
-        margin-bottom: 0px;
-      }
-
-      .new_footer_top .f_widget.about-widget .f_list li a {
-        color: whitesmoke;
-        text-decoration: none;
-        font-size: large;
-        font-weight: 400;
-      }
-
-      .new_footer_top .f_widget.about-widget .f_list li a:hover {
-        color: yellow;
-        text-decoration: underline;
-      }
-
-      .f_social_icon a {
-        width: 46px;
-        height: 46px;
-        border-radius: 50%;
-        font-size: 14px;
-        line-height: 45px;
-        color: #858da8;
-        display: inline-block;
-        background: #ebeef5;
-        text-align: center;
-        transition: all 0.2s linear;
-      }
-
-      .new_footer_top .f_social_icon a:hover {
-        background: #5e2ced;
-        border-color: #5e2ced;
-        color: white;
-      }
-
-      .new_footer_top .footer_bg {
-        position: absolute;
-        bottom: 0;
-        background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEigB8iI5tb8WSVBuVUGc9UjjB8O0708X7Fdic_4O1LT4CmLHoiwhanLXiRhe82yw0R7LgACQ2IhZaTY0hhmGi0gYp_Ynb49CVzfmXtYHUVKgXXpWvJ_oYT8cB4vzsnJLe3iCwuzj-w6PeYq_JaHmy_CoGoa6nw0FBo-2xLdOPvsLTh_fmYH2xhkaZ-OGQ/s16000/footer_bg.png")
-          no-repeat center 0;
-        width: 100%;
-        height: 266px;
-      }
-
-      .new_footer_top .footer_bg .footer_bg_one {
-        background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif")
-          no-repeat center center;
-        width: 330px;
-        height: 105px;
-        background-size: 100%;
-        position: absolute;
-        bottom: 0;
-        left: 30%;
-        animation: myfirst 22s linear infinite;
-      }
-
-      .new_footer_top .footer_bg .footer_bg_two {
-        background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif")
-          no-repeat center center;
-        width: 88px;
-        height: 100px;
-        background-size: 100%;
-        bottom: 0;
-        left: 38%;
-        position: absolute;
-        animation: myfirst 30s linear infinite;
-      }
-
-      @keyframes myfirst {
-        0% {
-          left: -25%;
-        }
-        100% {
-          left: 100%;
-        }
-      }
-    </style>
   </head>
   <body>
-    <footer class="new_footer_area bg_color">
-      <div class="new_footer_top">
+    <footer class="footer">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-3 col-md-6">
-              <div
-                class="f_widget company_widget wow fadeInLeft"
-                data-wow-delay="0.2s"
-                style="
-                  visibility: visible;
-                  animation-delay: 0.2s;
-                  animation-name: fadeInLeft;
-                "
-              >
-                <form
-                  action="#"
-                  class="f_subscribe_two mailchimp"
-                  method="post"
-                  novalidate="true"
-                  _lpchecked="1"
-                >
-                  <p class="mchimp-errmessage" style="display: none"></p>
-                  <p class="mchimp-sucmessage" style="display: none"></p>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div
-                class="f_widget about-widget pl_70 wow fadeInLeft"
-                data-wow-delay="0.4s"
-                style="
-                  visibility: visible;
-                  animation-delay: 0.4s;
-                  animation-name: fadeInLeft;
-                "
-              >
-              </div>
-              <div class="things">
-                <p><a href="#">Home</a></p>
-                <p><a href="#">About Us</a></p>
-                <p><a href="#">FAQ</a></p>
-                <p><a href="#">Privacy &amp; Policy</a></p>
-                <p><a href="#">Contact Us</a></p>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <div
-                class="f_widget social-widget pl_70 wow fadeInLeft"
-                data-wow-delay="0.6s"
-                style="
-                  visibility: visible;
-                  animation-delay: 0.6s;
-                  animation-name: fadeInLeft;
-                "
-              >
-                <h3
-                  class="f-title f_600 t_color f_size_18"
-                  style="color: whitesmoke"
-                >
-                  Follow Us
-                </h3>
-                <div class="f_social_icon">
-                  <!-- Social Media Icons -->
-                  <a href="#" class="fab fa-facebook" style="margin-right: 10px"></a>
-                  <a href="#" class="fab fa-youtube" style="margin-right: 10px"></a>
-                  <a href="#" class="fab fa-instagram"></a>
-                </div>
-              </div>
-            </div>
+          <div class="col1">
+            <a href="#" class="brand">Vaishnavi Tours</a>
+            <ul class="media-icons">
+              <li>
+                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-discord"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col2">
+            <ul class="menu">
+              <li><a href="#">Home</a></li>
+              <li><a href="aboutus.html">About</a></li>
+              <li><a href="service_network.html">Services</a></li>
+              <li><a href='tel:8169200792'>Contact</a></li>
+              <p>Thank you for visiting [Your Website Name]. We strive to provide the best services and experiences for our customers. If you have any questions or need assistance, feel free to reach out to us. Your satisfaction is our top priority.</p>
+            </ul>
+          </div>
+          <div class="col3">
+              <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+      <dotlottie-player src="https://lottie.host/84674a7c-3568-4998-9f88-536b335f1a46/9dTVBTUDGF.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+            <div class="footer-bottom">
+          </div>
+          <div class="mekk">
+            <p> &COPY; Vaishnavi Tours - All Rights Reserved</p>
           </div>
         </div>
-        <div class="footer_bg">
-          <div class="footer_bg_one"></div>
-          <div class="footer_bg_two"></div>
-        </div>
-      </div>
-    </footer>
-  </body>
+      </footer>               
+</body>
 </html>

@@ -30,8 +30,28 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/homepage-css-files/footer-style.css" />
+
 
     <style>
+      .container {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 1.5s ease;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+.scroll-animation {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
       /* CSS Variables for Theme */
       :root {
         --primary-color: #2c3e50;
@@ -810,6 +830,84 @@
         const modal = document.getElementById("contact-icon");
         modal.classList.toggle("show");
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        } else {
+          entry.target.classList.remove("show");
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll(".container");
+    hiddenElements.forEach((el) => {
+      observer.observe(el);
+    });
+  });
+
+  const scrollElements = document.querySelectorAll(".scroll-animation");
+
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend;
+        };
+
+        const displayScrollElement = (element) => {
+            element.style.opacity = 1;
+            element.style.transform = 'translateY(0)';
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.25)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+window.addEventListener("scroll", handleScrollAnimation);
     </script>
+        <footer class="footer">
+          <div class="container">
+            <div class="col1">
+              <a href="#" class="brand">Vaishnavi Tours</a>
+              <ul class="media-icons">
+                <li>
+                  <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-discord"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="#"><i class="fa-brands fa-github"></i></a>
+                </li>
+              </ul>
+            </div>
+            <div class="col2">
+              <ul class="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="aboutus.html">About</a></li>
+                <li><a href="service_network.html">Services</a></li>
+                <li><a href='tel:8169200792'>Contact</a></li>
+                <p>Thank you for visiting [Your Website Name]. We strive to provide the best services and experiences for our customers. If you have any questions or need assistance, feel free to reach out to us. Your satisfaction is our top priority.</p>
+              </ul>
+            </div>
+            <div class="col3">
+                <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+        <dotlottie-player src="https://lottie.host/84674a7c-3568-4998-9f88-536b335f1a46/9dTVBTUDGF.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+              <div class="footer-bottom">
+            </div>
+            <div class="mekk">
+              <p> &COPY; Vaishnavi Tours - All Rights Reserved</p>
+            </div>
+          </div>
+        </footer>               
+  
   </body>
 </html>

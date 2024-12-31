@@ -9,6 +9,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/homepage-css-files/footer-style.css" />
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -20,7 +22,6 @@
             background: linear-gradient(to bottom right, #1e1e1e, #343434);
             color: white;
             min-height: 100vh;
-            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -32,7 +33,10 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
-            animation: fadeIn 1.5s ease-in-out;
+            animation: fadeIn 1.5s ease-in-out;            
+            justify-content: center;
+            align-items: center;
+
         }
 
         h1 {
@@ -473,6 +477,7 @@
             document.querySelector('form').appendChild(newSection);
         });
     </script>
+    
      <script>
         
         emailjs.init('-KAL8dhf9nwGDKtZQ'); // Replace with your EmailJS public key
@@ -517,5 +522,45 @@
         modal.classList.toggle("show");
       }
 </script>
+<footer class="footer">
+  <div class="container">
+    <div class="col1">
+      <a href="#" class="brand">Vaishnavi Tours</a>
+      <ul class="media-icons">
+        <li>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-discord"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fa-brands fa-github"></i></a>
+        </li>
+      </ul>
+    </div>
+    <div class="col2">
+      <ul class="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="aboutus.html">About</a></li>
+        <li><a href="service_network.html">Services</a></li>
+        <li><a href='tel:8169200792'>Contact</a></li>
+        <p>Thank you for visiting [Your Website Name]. We strive to provide the best services and experiences for our customers. If you have any questions or need assistance, feel free to reach out to us. Your satisfaction is our top priority.</p>
+      </ul>
+    </div>
+    <div class="col3">
+        <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+<dotlottie-player src="https://lottie.host/84674a7c-3568-4998-9f88-536b335f1a46/9dTVBTUDGF.lottie" background="transparent" speed="1" style="width: 300px; height: 300px" loop autoplay></dotlottie-player>
+      <div class="footer-bottom">
+    </div>
+    <div class="mekk">
+      <p> &COPY; Vaishnavi Tours - All Rights Reserved</p>
+    </div>
+  </div>
+</footer>               
+
+
 </body>
 </html>
