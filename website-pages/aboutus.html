@@ -8,26 +8,13 @@
     <style>
       /* General Styles */
       body {
-        font-family: Arial, sans-serif;
         background-color: #121212;
         color: #eaeaea;
         margin: 0;
-        padding: 0;
+        padding: 5px;
         overflow-x: hidden;
-      }
-      /* Hero Section Styling */
-      .hero-section {
-        position: relative;
-        background-image: url("istockphoto-175434885-612x612.jpg");
-        background-size: cover;
-        background-position: center;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
+        justify-items: auto;
         align-items: center;
-        color: white;
-        text-align: center;
-        overflow: hidden;
       }
 
       /* Content Styling */
@@ -166,7 +153,8 @@
         position: relative;
         z-index: 1;
         padding: 4rem 2rem;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgb(44, 44, 44)
+        (0, 0, 0, 0.6);
         border-radius: 1rem;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(8px);
@@ -200,7 +188,7 @@
         height: 400px;
         margin-top: 50px;
         transform: scale(0.9); 
-        transition: transform 0.4s ease-out; 
+        transition: transform 0.6s ease-out; 
       }
 
       /* Hover effect on the image to zoom in */
@@ -702,9 +690,10 @@
         }
 
         .owner-img {
-          height: 300px;
+          height: 400px;
           margin-top: 0;
           margin-left: 70px;
+          width: 300px;
         }
         .owner-img-container {
           margin-bottom: 1rem;
@@ -756,22 +745,15 @@
 
   <body>
     <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-content">
-        <div class="text-container">
-          <div class="text">ABOUT US</div>
-      </div>
-      </div>
-    </section>
   
 
     <!-- Owner Section -->
     <section class="owner-section">
-      <h1>Meet The <span style="color: goldenrod">Owner</span></h1>
+      <h1 >Meet The <span style="color: goldenrod">Owner</span></h1>
       <div class="container">
         <div class="flex">
           <div class="owner-img-container" style="flex: 1">
-            <img src="vaishnavi.jpg" alt="Owner" class="owner-img" />
+            <img src="tarun.jpg" alt="Owner" class="owner-img" />
           </div>
           <div class="owner-info" style="flex: 2; margin-left: 3rem">
             <h2>Tarun Kumar Soni</h2>
@@ -895,7 +877,7 @@ window.addEventListener("scroll", handleScrollAnimation);
       name: "Khemraj Sinha",
       image: "Captain3.jpg",
       experience: "3+ Years",
-      rating: 4.9,
+      rating: 4.5,
       trips: "200",
       speciality: "Special Captain",
     },
@@ -904,7 +886,7 @@ window.addEventListener("scroll", handleScrollAnimation);
       name: "Gulshan kesharwani",
       image: "Captain1.jpg",
       experience: "3+ Years",
-      rating: 4.8,
+      rating: 4.3,
       trips: "500",
       speciality: "Elite Transporter",
     },
@@ -977,8 +959,5 @@ window.addEventListener("scroll", handleScrollAnimation);
             });
         });
 
-<<<<<<< HEAD
 </script>
-=======
 </script>
->>>>>>> 593bee0ed238b26d129161eaaac35c0fa10583c3
