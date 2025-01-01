@@ -335,6 +335,11 @@
         opacity: 1;
         pointer-events: all;
       }
+      @media screen  and (max-width: 768px) { .stars{ display: flex;
+
+justify-content: space-evenly;text-align: center;padding-left: 0%;}
+        
+      }
     </style>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
@@ -373,7 +378,8 @@
 
 
     <!-- main content -->
-    <div class="container">
+     <div style="display: flex; justify-content: center;">
+    <div class="container" >
         <h1>Service Feedback</h1>
         <form id="feedbackForm">
             <label for="name">Your Name:</label>
@@ -419,7 +425,7 @@
 
             <button type="submit">Submit Feedback</button>
         </form>
-    </div>
+    </div></div>
 
     <script>
         document.getElementById('addMore').addEventListener('click', function() {
@@ -531,16 +537,18 @@
     <div class="col1">
       <a href="#" class="brand">Vaishnavi Tours</a>
       <ul class="media-icons">
-          <li>
-              <a href="https://www.facebook.com/share/1Anpd6CaVt/"><i class="fa-brands fa-facebook"></i></a>
-            </li>
+        <li>
+          <a href="https://www.facebook.com/share/1Anpd6CaVt/"><i class="fa-brands fa-facebook"></i></a>
+        </li>
 
-        <li>
-          <a href="https://www.youtube.com/@vaishnavitours.cg10"><i class="fa-brands fa-youtube"></i></a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/vaishnavitours.bilaspur/?igsh=MTlqdzE0a3p0dzUxdw%3D%3D#"><i class="fa-brands fa-instagram"></i></a>
-        </li>
+    <li>
+      <a href="https://www.youtube.com/@vaishnavitours.cg10"><i class="fa-brands fa-youtube"></i></a>
+    </li>
+    <li>
+      <a href="https://www.instagram.com/vaishnavitours.bilaspur/?igsh=MTlqdzE0a3p0dzUxdw%3D%3D#"><i class="fa-brands fa-instagram"></i></a>
+    </li>
+   <li><a href='https://wa.me/9244784443'><i class="fa-brands fa-whatsapp"></i></a>
+   </li> 
       </ul>
     </div>
     <div class="col2">
@@ -559,7 +567,12 @@
     </div>
     <div class="mekk">
       <p> &COPY; Vaishnavi Tours - All Rights Reserved</p>
-      <p> &COPY; Website powered by Byte_Knightz </p>
+      <p>
+        &COPY; Website powered by 
+        <a href="https://byte-knightz.vercel.app/" target="_blank" rel="noopener noreferrer" style="font-weight: bold; color:lightskyblue;">
+          Byte_Knightz
+        </a>
+      </p>
 
     </div>
   </div>
