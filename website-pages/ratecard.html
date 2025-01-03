@@ -266,6 +266,20 @@
       .toll-mention:hover {
         background: rgba(255, 255, 255, 0.8);
       }
+      .carrier-mention {
+        text-align: center;
+        margin: 1rem;
+        font-size: 0.95rem;
+        color: #555;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        transition: background var(--transition-speed);
+      }
+
+      .carrier-mention:hover {
+        background: rgba(255, 255, 255, 0.8);
+      }
 
       /* RESPONSIVE STYLING */
       @media (max-width: 768px) {
@@ -522,7 +536,8 @@
         {
           title: "Raipur ↔ Raigarh",
           fareSedan: "₹4,500",
-          fareSUV: "₹4,500",
+          fareSUV: "₹6,800",
+          fareInn: "₹8,800",
           distance: "130 km",
           time: "3 hrs",
           tollIncluded: true,
@@ -534,7 +549,8 @@
         {
           title: "Raipur ↔ Korba",
           fareSedan: "₹4,500",
-          fareSUV: "₹4,500",
+          fareSUV: "₹6,800",
+          fareInn: "₹8,800",
           distance: "230 km",
           time: "5 hrs",
           tollIncluded: true,
@@ -546,7 +562,8 @@
         {
           title: "Bilaspur ↔ Korba",
           fareSedan: "₹2,200",
-          fareSUV: "₹2,200",
+          fareSUV: "₹3,500",
+          fareInn: "contact us",
           distance: "100 km",
           time: "3 hrs",
           tollIncluded: true,
@@ -557,8 +574,9 @@
         },
         {
           title: "Bilaspur Airport ↔ Korba Airport",
-          fareSedan: "₹2,400",
-          fareSUV: "₹2,400",
+          fareSedan: "₹2,500",
+          fareSUV: "₹3,800",
+          fareInn: "contact us",
           distance: "100 km",
           time: "3 hrs",
           tollIncluded: true,
@@ -570,7 +588,8 @@
         {
           title: "Bilaspur ↔ Raipur",
           fareSedan: "₹2,500",
-          fareSUV: "₹2,500",
+          fareSUV: "₹3,500",
+          fareInn: "₹5,500",
           distance: "130 km",
           time: "3 hrs",
           tollIncluded: true,
@@ -583,6 +602,7 @@
           title: "Bilaspur ↔ Raigarh",
           fareSedan: "₹3,200",
           fareSUV: "₹3,200",
+          fareInn: "₹5,500",
           distance: "160 km",
           time: "4 hrs",
           tollIncluded: true,
@@ -597,7 +617,8 @@
         {
           title: "Raigarh ↔ Jharsuguda",
           fareSedan: "₹2,600",
-          fareSUV: "₹2,600",
+          fareSUV: "₹3,600",
+          fareInn: "₹5,500",
           distance: "95 km",
           time: "3 hrs",
           tollIncluded: true,
@@ -609,7 +630,8 @@
         {
           title: "Sambalpur ↔ Raipur",
           fareSedan: "₹5,500",
-          fareSUV: "₹5,500",
+          fareSUV: "₹8,500",
+          fareInn: "₹10,500",
           distance: "260 km",
           time: "5 hrs",
           tollIncluded: true,
@@ -621,7 +643,8 @@
         {
           title: "Raipur ↔ Bargarh",
           fareSedan: "₹5,000",
-          fareSUV: "₹5,000",
+          fareSUV: "₹8,000",
+          fareInn: "₹10,500",
           distance: "230 km",
           time: "4 hrs",
           tollIncluded: true,
@@ -657,16 +680,30 @@
         // Fare for Sedan
         const fareSedanP = document.createElement("div");
         fareSedanP.className = "fare-sedan";
-        fareSedanP.innerHTML = `<span class="material-icons" aria-hidden="true">local_taxi</span> <strong>Fare (Sedan) : </strong> ${route.fareSedan}`;
+        fareSedanP.innerHTML = `<span class="material-icons" aria-hidden="true">local_taxi</span> <strong>Fare (Sedan & Hatchback) : </strong> ${route.fareSedan}`;
 
         // Fare for SUV
         const fareSuvP = document.createElement("div");
         fareSuvP.className = "fare-suv";
         fareSuvP.innerHTML = `<span class="material-icons" aria-hidden="true">airport_shuttle</span> <strong>Fare (SUV) : </strong> ${route.fareSUV}`;
 
+        // Fare for SUV
+        const fareInnP = document.createElement("div");
+        if (route.fareInn.toLowerCase() === "contact us") {
+          fareInnP.innerHTML = `<span class="material-icons" aria-hidden="true">airport_shuttle</span> 
+                                <strong>Fare (Innova Crysta): </strong> 
+                                <a href="tel:+919244784443">Contact Us</a>`;
+        } else {
+          fareInnP.innerHTML = `<span class="material-icons" aria-hidden="true">airport_shuttle</span> 
+                                <strong>Fare (Innova Crysta): </strong> ${route.fareInn}`;
+        };
+
+
         // Append Sedan and SUV fares to fareDiv
         fareDiv.appendChild(fareSedanP);
         fareDiv.appendChild(fareSuvP);
+        fareDiv.appendChild(fareInnP);
+
 
         // Distance
         const distanceP = document.createElement("div");
@@ -722,6 +759,13 @@
           ? "Toll charges are included in the fare."
           : "Toll charges are not included.";
         card.appendChild(tollMention);
+
+      // vehicle with carrier
+                const carrierMention = document.createElement("div");
+        carrierMention.className = "carrier-mention";
+        carrierMention.innerHTML = ` Need a vehicle with a carrier? 
+                                      <a href="tel:+919244784443">Call Us</a> `;
+        card.appendChild(carrierMention);
 
         // Append the card to the specified container
         document.getElementById(containerId).appendChild(card);
