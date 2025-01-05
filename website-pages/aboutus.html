@@ -224,6 +224,7 @@
         color: #f0a500;
         margin-bottom: 1rem;
         animation: bounceIn 1s ease-out forwards;
+        margin-left: 0;
       }
 
       @keyframes bounceIn {
@@ -694,7 +695,7 @@
         .owner-img {
           height: 400px;
           margin-top: 0;
-          margin-left: 70px;
+          margin-left: 45px;
           width: 300px;
         }
         .owner-img-container {
@@ -944,7 +945,7 @@
       <h1 >Meet The <span style="color: goldenrod">Owner</span></h1>
       <div class="container">
         <div class="flex">
-          <div class="owner-img-container" style="flex: 1">
+          <div class="owner-img-container" style="flex:1; background-size: cover;">
             <img src="tarun.jpg" alt="Owner" class="owner-img" />
           </div>
           <div class="owner-info" style="flex: 2; margin-left: 3rem">
@@ -1145,6 +1146,15 @@ window.addEventListener("scroll", handleScrollAnimation);
       rating: 4.7,
       trips: "350",
       speciality: "City Navigator",
+    },
+    {
+      id: 5,
+      name: "Deepak Rajput",
+      image: "Captain-hr.jpeg",
+      experience: "3+ Years",
+      rating: 4.5,
+      trips: "310",
+      speciality: "Human Resource Manager",
     }
   ];
 
@@ -1221,4 +1231,4 @@ window.addEventListener("scroll", handleScrollAnimation);
       }
 
 </script>
-</script>
+
