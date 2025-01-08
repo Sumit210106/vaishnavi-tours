@@ -168,8 +168,8 @@
         justify-content: space-between;
       }
 
-      .route-info h2 {
-        font-size: 1.5rem;
+      .route-info h1 {
+        font-size: 2rem;
         font-weight: 700;
         margin-bottom: 1rem;
         color: var(--heading-color);
@@ -255,6 +255,7 @@
       .toll-mention {
         text-align: center;
         margin: 1rem;
+        margin-bottom: 0px;
         font-size: 0.95rem;
         color: #555;
         background: rgba(255, 255, 255, 0.6);
@@ -398,7 +399,7 @@
         left: 50%;
         top: 40%;
         bottom: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
         background-color: #120c0c;
         max-width: 380px;
         width: 65%;
@@ -406,7 +407,7 @@
         padding: 30px 20px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         display: none;
-        z-index: 10000;
+        z-index: 9999;
         animation: fadeIn 0.5s ease-out forwards;
       }
       @keyframes fadeIn {
@@ -465,7 +466,7 @@
       .modal.show .overlay {
         opacity: 1;
         pointer-events: all;
-        z-index: 10000;
+        z-index: 9999;
       }
     </style>
   </head>
@@ -478,36 +479,34 @@
         destination.
       </p>
     </section>
+<!-- Chatbot and contact-->
+<!-- <section id="contact-icon" class="modal">
+  <button class="modal-button" onclick="toggleContact()">
+    <i class="fa-solid fa-envelope"></i>
+  </button>
+  <div class="overlay" onclick="toggleContact()"></div>
+  <div class="modal-box">
+    <button onclick="window.location.href='tel:+919244784443'">
+      <i class="fa-solid fa-phone-alt"></i>
+    </button>
 
-    <!-- Chatbot and contact-->
-    <!-- <section id="contact-icon" class="modal">
-      <button class="modal-button" onclick="toggleContact()">
-        <i class="fa-solid fa-envelope"></i>
-      </button>
-      <div class="overlay" onclick="toggleContact()"></div>
-      <div class="modal-box">
-        <button onclick="window.location.href='tel:+919244784443'">
-          <i class="fa-solid fa-phone-alt"></i>
-        </button>
+    <button onclick="window.location.href='https://wa.me/9244784443'">
+      <i class="fa-brands fa-whatsapp"></i>
+    </button>
+  </div>
+</section> -->
 
-        <button onclick="window.location.href='https://wa.me/9244784443'">
-          <i class="fa-brands fa-whatsapp"></i>
-        </button>
-      </div>
-    </section> -->
+<div class="chat-icon" onclick="toggleChat()">
+  <i class="fa-solid fa-robot"></i>
 
-    <div class="chat-icon" onclick="toggleChat()">
-      <i class="fa-solid fa-robot"></i>
-
-    </div>
+</div>
 
 
-    <div class="chat-window" id="chatWindow">
-      <iframe
-        src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/27/15/20241227155545-410W8O1T.json"
-      ></iframe>
-    </div>
-
+<div class="chat-window" id="chatWindow">
+  <iframe
+    src="https://cdn.botpress.cloud/webchat/v2.2/shareable.html?configUrl=https://files.bpcontent.cloud/2024/12/27/15/20241227155545-410W8O1T.json"
+  ></iframe>
+</div>
     <!-- MAIN CONTENT -->
     <div class="container">
       <!-- Available Cab Routes Section -->
@@ -667,7 +666,7 @@
         const info = document.createElement("div");
         info.className = "route-info";
 
-        const title = document.createElement("h2");
+        const title = document.createElement("h1");
         title.textContent = route.title;
 
         const details = document.createElement("div");
@@ -866,7 +865,8 @@
       });
 
       // Chat bot toggle function
-      function toggleChat() {
+     // Chat bot toggle function
+     function toggleChat() {
         const chatWindow = document.getElementById("chatWindow");
         chatWindow.style.display =
           chatWindow.style.display === "none" || chatWindow.style.display === ""
@@ -874,11 +874,11 @@
             : "none";
       }
 
-      // changed the contact icon with the cntact number
-      function toggleContact() {
-        window.location.href = "tel:+919244784443";
-      }
 
+      function toggleContact() {
+        const modal = document.getElementById("contact-icon");
+        modal.classList.toggle("show");
+      }
       document.addEventListener("DOMContentLoaded", function () {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
@@ -939,7 +939,7 @@ window.addEventListener("scroll", handleScrollAnimation);
         </div>
         <div class="col2">
           <ul class="menu">
-            <li><a href="#">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="aboutus.html">About</a></li>
             <li><a href="service_network.html">Services</a></li>
             <li><a href='tel:+919244784443'>Contact</a></li>
