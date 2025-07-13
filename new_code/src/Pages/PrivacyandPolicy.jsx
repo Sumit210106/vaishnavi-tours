@@ -59,7 +59,7 @@ const PrivacyAndPolicy = () => {
             <p className="text-sm text-gray-400">
               © {currentYear}{' '}
               <a
-                href="https://vaishnavitours.in"
+                href="https://vaishnavitours.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-yellow-400 hover:underline"
