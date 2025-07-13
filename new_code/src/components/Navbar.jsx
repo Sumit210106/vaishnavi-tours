@@ -1,16 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import {
-  Menu,
-  X,
-  MapPin,
-  Sun,
-  Cloud,
-  CloudRain,
-  CloudSnow,
-  CloudLightning,
-  Wind,
-} from "lucide-react";
+import { Menu, X } from "lucide-react";
 import logo from "../assets/VaishnaviTours.png";
 
 const navLinks = [
@@ -27,61 +17,8 @@ const navLinks = [
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [weather, setWeather] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const fetchWeather = async () => {
-      try {
-        const position = await new Promise((resolve, reject) =>
-          navigator.geolocation.getCurrentPosition(resolve, reject)
-        );
-        const { latitude, longitude } = position.coords;
-
-        const geoRes = await fetch(
-          `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=13ab580bfb8d5e82947f4c6e4358a614`
-        );
-        const geoData = await geoRes.json();
-        const city = geoData?.[0]?.name || "Unknown";
-
-        const weatherRes = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=13ab580bfb8d5e82947f4c6e4358a614&units=metric`
-        );
-        const weatherData = await weatherRes.json();
-
-        setWeather(weatherData);
-      } catch (err) {
-        console.error("Weather fetch failed", err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchWeather();
-  }, []);
-
-
-  const getWeatherIcon = (condition) => {
-    switch (condition?.toLowerCase()) {
-      case "clear":
-      case "sunny":
-        return <Sun className="text-gray-800" size={20} />;
-      case "clouds":
-      case "cloudy":
-        return <Cloud className="text-gray-800" size={20} />;
-      case "rain":
-      case "drizzle":
-        return <CloudRain className="text-gray-800" size={20} />;
-      case "snow":
-        return <CloudSnow className="text-gray-800" size={20} />;
-      case "thunderstorm":
-        return <CloudLightning className="text-gray-800" size={20} />;
-      default:
-        return <Wind className="text-gray-800" size={20} />;
-    }
-  };
 
   const handleNavigation = (to) => {
     navigate(to);
@@ -132,24 +69,6 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Weather */}
-          <div className="hidden md:flex items-center space-x-2 bg-black/80 px-4 py-2 rounded-full border border-amber-500/40 shadow-lg shadow-amber-500/5">
-            {loading ? (
-              <div className="animate-pulse h-4 w-24 bg-gray-800 rounded" />
-            ) : weather ? (
-              <div className="flex items-center">
-                {getWeatherIcon(weather.weather[0].main)}
-                <span className="ml-1 text-sm font-medium text-amber-300">
-                  {weather.name}: {Math.round(weather.main.temp)}°C
-                </span>
-              </div>
-            ) : (
-              <span className="text-amber-500/70 text-sm">
-                Weather unavailable
-              </span>
-            )}
-          </div>
-
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map(
@@ -180,12 +99,6 @@ const Navbar = () => {
 
           {/* Mobile menu */}
           <div className="lg:hidden flex items-center">
-            {!loading && weather && (
-              <div className="mr-4 flex items-center text-sm text-amber-300">
-                {getWeatherIcon(weather.weather[0].main)}
-                <span className="ml-1">{Math.round(weather.main.temp)}°C</span>
-              </div>
-            )}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 rounded-md text-amber-400 hover:bg-gray-900"
@@ -221,21 +134,6 @@ const Navbar = () => {
             <X size={24} className="text-amber-400" />
           </button>
         </div>
-
-        {/* Weather */}
-        {!loading && weather && (
-          <div className="flex items-center justify-center py-3 px-4 border-b border-amber-500/30 bg-black/40">
-            <MapPin size={16} className="text-amber-400" />
-            <span className="ml-1 text-sm font-medium text-amber-300">
-              {weather.name}
-            </span>
-            <span className="mx-2 text-gray-600">|</span>
-            {getWeatherIcon(weather.weather[0].main)}
-            <span className="ml-1 text-sm font-medium text-amber-300">
-              {Math.round(weather.main.temp)}°C, {weather.weather[0].main}
-            </span>
-          </div>
-        )}
 
         {/* Links */}
         <div className="py-2 px-1 overflow-y-auto h-full bg-gradient-to-b from-black to-gray-900">
