@@ -5,8 +5,8 @@ const chhattisgarhRoutes = [
     {
       title: "Raipur ↔ Raigarh",
       fareSedan: "₹4,500",
-      fareSUV: "₹6,800",
-      fareInn: "₹9,500",
+      fareSUV: "₹5,500",
+      fareInn: "₹8,500",
       distance: "260 km",
       time: "3 hrs",
       tollIncluded: true,
@@ -18,7 +18,7 @@ const chhattisgarhRoutes = [
     {
       title: "Raipur ↔ Korba",
       fareSedan: "₹4,500",
-      fareSUV: "₹6,800",
+      fareSUV: "₹5,500",
       fareInn: "₹8,800",
       distance: "230 km",
       time: "5 hrs",
@@ -69,9 +69,9 @@ const chhattisgarhRoutes = [
     },
     {
       title: "Bilaspur ↔ Raigarh",
-      fareSedan: "₹3,200",
-      fareSUV: "₹3,200",
-      fareInn: "₹5,500",
+      fareSedan: "₹3,000",
+      fareSUV: "₹3,500",
+      fareInn: "₹6,500",
       distance: "160 km",
       time: "4 hrs",
       tollIncluded: true,

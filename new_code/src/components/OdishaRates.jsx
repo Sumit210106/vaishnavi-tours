@@ -17,8 +17,8 @@ const odishaRoutes = [
     },
     {
       title: "Sambalpur ↔ Raipur",
-      fareSedan: "₹5,500",
-      fareSUV: "₹8,500",
+      fareSedan: "₹5,000",
+      fareSUV: "₹7,500",
       fareInn: "₹10,500",
       distance: "260 km",
       time: "5 hrs",
@@ -31,7 +31,7 @@ const odishaRoutes = [
     {
       title: "Raipur ↔ Bargarh",
       fareSedan: "₹5,000",
-      fareSUV: "₹8,000",
+      fareSUV: "₹7,500",
       fareInn: "₹10,500",
       distance: "230 km",
       time: "4 hrs",
