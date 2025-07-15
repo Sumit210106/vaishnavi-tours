@@ -31,7 +31,7 @@ const icons = [
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/vaishnavitours",
+    href: "https://www.facebook.com/vaishnavitours.bilaspur",
     icon: <FaFacebookF size={18} color={BLACK} />,
   },
   {
